@@ -1,0 +1,11 @@
+.PortfolioContainer {
+    line-height: 18pt;
+    padding: 100px 0 130px 0;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #444649;
+    font-family: "Raleway";
+    -webkit-font-smoothing: antialiased;
+}

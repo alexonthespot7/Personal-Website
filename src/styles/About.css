@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+.MainContainer {
+    padding: 100px 0px 130px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    line-height: 18pt;
+    color: #444649;
+    font-family: "Raleway";
+    -webkit-font-smoothing: antialiased;
+}
+
+.About {
+    font-size: 30pt;
+    font-weight: 900;
+}
+
+.Line {
+    margin: 25px 0 100px 0;
+    background: #444649;
+    height: 4px;
+    width: 70px;
+}
+
+.Header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.SoftSkills {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.SoftDouble {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 15px;
+}
+
+.Skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 10px;
+    height: 230px;
+}
+
+.Shape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/**.trapezoid {
+    border-bottom: 50px solid #04c2c9;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 70px;
+}
+
+.trapezoid2 {
+    border-top: 50px solid #04c2c9;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 70px;
+}*/
+
+.svg1 {
+    width: 120px;
+    height: 100px;
+}
+
+.Icon {
+    font-size: 36pt;
+    color: #fff;
+    position: absolute;
+    margin: 25px;
+}
+
+.TextDiv {
+    width: 230px;
+    text-align: center
+}
+
+.SmallTextDiv {
+    width: 150px;
+    text-align: center
+}
+
+.Label {
+    font-size: 18pt;
+    margin: 15px 0 5px 0;
+    font-weight: 900;
+    color: #444649;
+}
+
+.Description {
+    font-size: 12pt;
+    color: #444649;
+}
+
+.HardSkills {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    margin: 50px 0 0 0;
+}
+
+.Me {
+    padding: 0 50px 0 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    max-height: 100%;
+    max-width: 50%;
+}
+
+.SkillList {
+    margin: 0;
+    max-width: 90%;
+    width: calc(100% - 15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-height: 100%;
+    gap: 20px;
+}
+
+/**.trapezoidHard1 {
+    border-bottom: 40px solid #00a1a7;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    height: 0;
+    width: 56px;
+}
+
+.trapezoidHard2 {
+    border-top: 40px solid #00a1a7;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    height: 0;
+    width: 56px;
+}*/
+
+.svg2 {
+    height: 80px;
+    width: 96.5px;
+}
+
+.LabelHard {
+    font-size: 22pt;
+    margin: 0px 0 15px 0;
+    font-weight: 900;
+    color: #444649;
+}
+
+.HardSkill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 8px;
+    height: 184px;
+}
+
+.IconHard {
+    font-size: 32pt;
+    color: #fff;
+    position: absolute;
+    margin: 18px;
+}
+
+.LabelSkill {
+    font-size: 15pt;
+    margin: 0px 0 0 0;
+    font-weight: 900;
+    color: #444649;
+}
+
+@media (max-width:1000px) {
+    .MainContainer {
+        padding: 50px 0px 65px 0px;
+    }
+
+    .Line {
+        margin: 25px 0 50px 0;
+    }
+
+    .SoftSkills {
+        flex-direction: column;
+    }
+
+    .HardSkills {
+        flex-direction: column;
+        align-items: center;
+        margin: 25px 0 0 0;
+    }
+
+    .Me {
+        padding: 0 25px 0 25px;
+        max-width: 80%;
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width:850px) {
+    .HardSkills {
+        flex-direction: column;
+        align-items: center;
+        margin: 0px 0 0 0;
+    }
+
+    .Me {
+        padding: 0;
+        max-width: 85%;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width:601px) {
+    .SoftSkills {
+        gap: 40px;
+    }
+
+    .TextDiv {
+        width: 230px;
+    }
+
+    .Me {
+        max-width: 90%;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width:501px) {
+    .Description {
+        font-size: 10pt;
+    }
+
+    .LabelHard {
+        font-size: 20pt;
+    }
+
+    .TextDiv {
+        width: 200px;
+    }
+}
+
+@media (max-width:401px) {
+    .SoftDouble {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .LabelHard {
+        margin: 0;
+    }
+
+    .SkillList {
+        gap: 40px;
+    }
+}
