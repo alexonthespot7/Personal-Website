@@ -38,6 +38,26 @@ div {
     gap: 10px
 }
 
+@media (max-width:600px) {
+    .DialogInfo {
+        line-height: 16pt;
+    }
+
+    .DialogDescription {
+        line-height: 16pt;
+    }
+}
+
+@media (max-width:500px) {
+    .DialogInfo {
+        line-height: 14pt;
+    }
+
+    .DialogDescription {
+        line-height: 14pt;
+    }
+}
+
 @media (max-width:460px) {
     .DialogTitle {
         font-size: 18pt;
@@ -46,12 +66,10 @@ div {
 
     .DialogInfo {
         font-size: 9pt;
-        line-height: 16pt;
     }
 
     .DialogDescription {
         font-size: 10pt;
-        line-height: 16pt;
     }
 
     .DialogButtons {
@@ -80,13 +98,6 @@ div {
         font-size: 14pt;
     }
 
-    .DialogInfo {
-        line-height: 14pt;
-    }
-
-    .DialogDescription {
-        line-height: 14pt;
-    }
 }
 
 @media (max-width:350px) {
