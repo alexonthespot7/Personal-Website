@@ -223,6 +223,10 @@
         max-width: 80%;
         margin-bottom: 60px;
     }
+
+    .LabelSkill {
+        margin: 10px 0 0 0;
+    }
 }
 
 @media (max-width:850px) {
@@ -257,6 +261,7 @@
 @media (max-width:501px) {
     .Description {
         font-size: 10pt;
+        line-height: 14pt;
     }
 
     .LabelHard {
@@ -276,6 +281,10 @@
         background: #444649;
         height: 3px;
         width: 70px;
+    }
+
+    .LabelSkill {
+        margin: 5px 0 0 0;
     }
 }
 
