@@ -42,8 +42,8 @@ export default function Header() {
                     initial='default'
                     whileHover='hover'
                 >
-                    <HashLink smooth to="#Projects" className='button'>
-                        View my projects
+                    <HashLink smooth to="#About" className='button'>
+                        About me
                         <motion.div style={{ display: 'flex', alignItems: 'center' }} transition={{ duration: 0.4 }} variants={iconVariants}><ArrowForwardIcon sx={{ fontSize: arrowSize }} /></motion.div>
                     </HashLink>
                 </motion.div>

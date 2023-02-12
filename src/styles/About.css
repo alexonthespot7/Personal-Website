@@ -12,7 +12,6 @@
     line-height: 18pt;
     color: #444649;
     font-family: "Raleway";
-    -webkit-font-smoothing: antialiased;
 }
 
 .About {
@@ -90,7 +89,8 @@
     font-size: 36pt;
     color: #fff;
     position: absolute;
-    margin: 25px;
+    margin: auto;
+    margin-top: 25px;
 }
 
 .TextDiv {
@@ -188,7 +188,8 @@
     font-size: 32pt;
     color: #fff;
     position: absolute;
-    margin: 18px;
+    margin: auto;
+    margin-top: 18px
 }
 
 .LabelSkill {
@@ -264,6 +265,17 @@
 
     .TextDiv {
         width: 200px;
+    }
+
+    .About {
+        font-size: 26pt;
+    }
+
+    .Line {
+        margin: 25px 0 50px 0;
+        background: #444649;
+        height: 3px;
+        width: 70px;
     }
 }
 

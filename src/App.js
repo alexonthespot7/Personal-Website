@@ -7,6 +7,8 @@ import MyNav from './Components/MyNav';
 import useMediaQuery from './Hooks/useMediaQuery';
 import About from './Components/About';
 import Portfolio from './Components/Portfolio';
+import Contact from './Components/Contact';
+import Footer from './Components/Footer';
 
 export default function App() {
   const matchesS = useMediaQuery("(min-width: 600px)");
@@ -47,12 +49,11 @@ export default function App() {
       <section style={{ backgroundColor: '#f5f5f5' }} ref={refPort} id='Projects'>
         <Portfolio />
       </section>
-      <section ref={refCont} id="Contact">
-        Contact
-
+      <section style={{ backgroundColor: '#252934' }} ref={refCont} id="Contact">
+        <Contact />
       </section>
-      <footer>
-        Footer
+      <footer ref={refCont} style={{ backgroundColor: '#1b242f' }}>
+        <Footer />
       </footer>
 
     </div>

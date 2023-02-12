@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.FooterContainer {
+    padding: 70px 0 50px 0;
+    font-family: "Raleway";
+    font-size: 12pt;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ArrowsButton {
+    background: #e31b6d;
+    cursor: pointer;
+    color: white;
+    height: 50px;
+    line-height: 40pt;
+    position: absolute;
+    margin-top: -95px;
+    width: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.ArrowsButton:hover {
+    filter: brightness(70%)
+}
+
+.Media {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.SocialLink {
+    background: #262f38;
+    cursor: pointer;
+    height: 55px;
+    width: 55px;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SocialLink:hover {
+    background: #04c2c9;
+}
+
+.FooterInfo {
+    color: #8f9aa7;
+    font-size: 10pt;
+    margin-top: 35px;
+    opacity: 0.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Year {
+    margin-left: 5px;
+    font-family: "Open Sans";
+}
+
+@media (max-width:350px) {
+    .FooterContainer {
+        padding: 50px 0 50px 0;
+    }
+
+    .ArrowsButton {
+        height: 40px;
+        line-height: 32pt;
+        width: 37.6px;
+        margin-top: -70px;
+    }
+
+    .Media {
+        gap: 24px;
+    }
+
+    .SocialLink {
+        height: 44px;
+        width: 44px;
+    }
+
+    .FooterInfo {
+        font-size: 8pt;
+        margin-top: 20px;
+    }
+
+    .Year {
+        margin-left: 5px;
+    }
+}

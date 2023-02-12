@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+div {
+    font-family: "Raleway";
+}
+
+.DialogTitle {
+    font-size: 20pt;
+    margin: 30px 0 5px 0;
+    font-weight: 600;
+    color: #444649;
+}
+
+.DialogInfo {
+    color: #c0c0c0;
+    font-size: 10pt;
+    font-weight: 600;
+    margin-bottom: 15px;
+    line-height: 18pt;
+}
+
+.DialogDescription {
+    font-size: 11pt;
+    line-height: 18pt;
+    margin-top: 15px;
+    color: #444649;
+}
+
+.DialogButtons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+
+.GitButtons {
+    display: flex;
+    gap: 10px
+}
+
+@media (max-width:460px) {
+    .DialogTitle {
+        font-size: 18pt;
+        margin-top: 20px;
+    }
+
+    .DialogInfo {
+        font-size: 9pt;
+        line-height: 16pt;
+    }
+
+    .DialogDescription {
+        font-size: 10pt;
+        line-height: 16pt;
+    }
+
+    .DialogButtons {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width:410px) {
+    .DialogTitle {
+        font-size: 16pt;
+    }
+
+    .DialogInfo {
+        font-size: 8pt;
+        margin-bottom: 10px;
+    }
+
+    .DialogDescription {
+        font-size: 10pt;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width:380px) {
+    .DialogTitle {
+        font-size: 14pt;
+    }
+
+    .DialogInfo {
+        line-height: 14pt;
+    }
+
+    .DialogDescription {
+        line-height: 14pt;
+    }
+}
+
+@media (max-width:350px) {
+    .DialogTitle {
+        font-size: 13pt;
+    }
+
+    .DialogInfo {
+        font-size: 7pt;
+    }
+
+    .DialogDescription {
+        font-size: 9pt;
+    }
+}
+
+@media (max-width:330px) {
+    .DialogInfo {
+        line-height: 12pt;
+    }
+
+    .DialogDescription {
+        line-height: 12pt;
+    }
+}

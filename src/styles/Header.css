@@ -24,7 +24,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
     .Stars {
-        animation: slide infinite 180s linear;
+        animation: slide infinite 160s linear;
     }
 }
 

@@ -130,7 +130,7 @@ export default function About() {
                             variants={variantsSkills}
                             transition={{ bounce: 0.5, duration: 0.7, ease: 'easeOut' }}
                         >
-                            <ElectricBoltIcon style={{ fontSize: matchesS ? '36pt' : '32pt', color: '#fff', position: 'absolute', margin: matchesS ? '25px' : '18px' }} />
+                            <ElectricBoltIcon style={{ fontSize: matchesS ? '36pt' : '32pt', color: '#fff', position: 'absolute', margin: matchesS ? '25px auto' : '18px auto' }} />
                             {firstPolygon}
                         </motion.div>
                         <motion.div
@@ -152,7 +152,7 @@ export default function About() {
                             variants={variantsSkills}
                             transition={{ bounce: 0.5, duration: 0.7, ease: 'easeOut', delay: 0.2 }}
                         >
-                            <SchoolIcon style={{ fontSize: matchesS ? '36pt' : '32pt', color: '#fff', position: 'absolute', margin: matchesS ? '25px' : '18px' }} />
+                            <SchoolIcon style={{ fontSize: matchesS ? '36pt' : '32pt', color: '#fff', position: 'absolute', margin: matchesS ? '25px auto' : '18px auto' }} />
                             {firstPolygon}
                         </motion.div>
                         <motion.div
@@ -275,7 +275,7 @@ export default function About() {
                         </div>
                         <div className='SkillHard'>
                             <div className='Shape'>
-                                <DiJava style={{ margin: '14px' }} className='IconHard' />
+                                <DiJava style={{ margin: '14px auto' }} className='IconHard' />
                                 {secondPolygon}
                             </div>
                             <div className={matchesXXS ? 'TextDiv' : 'SmallTextDiv'}>
@@ -288,7 +288,7 @@ export default function About() {
                     <div style={{ display: 'flex' }}>
                         <div className='SkillHard'>
                             <div className='Shape'>
-                                <SiPostgresql style={{ margin: '22px' }} className='IconHard' />
+                                <SiPostgresql style={{ margin: '22px auto' }} className='IconHard' />
                                 {secondPolygon}
                             </div>
                             <div className={matchesXXS ? 'TextDiv' : 'SmallTextDiv'}>
