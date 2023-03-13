@@ -130,7 +130,7 @@ function Contact() {
                     <Input disableUnderline style={{ color: '#fff' }} onChange={inputChanged} className='Input' placeholder='Your Email' type='email' name='email'>
                         {sms.email}
                     </Input>
-                    <Input multiline disableUnderline style={{ display: 'flex', alignItems: 'flex-start', color: '#fff', padding: '10px 15px', marginBottom: '5px', minHeight: '150px' }} onChange={inputChanged} className='Input' placeholder='Your messge' type='text' name='message'>
+                    <Input multiline disableUnderline style={{ display: 'flex', alignItems: 'flex-start', color: '#fff', padding: '10px 15px', marginBottom: '5px', minHeight: '150px' }} onChange={inputChanged} className='Input' placeholder='Your message' type='text' name='message'>
                         {sms.message}
                     </Input>
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>

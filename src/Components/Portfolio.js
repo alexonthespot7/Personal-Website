@@ -262,9 +262,9 @@ function Portfolio() {
                         (itemsPerDiv * number <= indexs && indexs < itemsPerDiv * (number + 1)) &&
                         <AnimatePresence>
                             <motion.div
-                                initial={{ opacity: 0, scale: 0 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
                                 layout
                                 transition={{ duration: 0.8 }}
                             >
@@ -323,52 +323,50 @@ function Portfolio() {
                 {projects.map((project, indexs) => {
                     return (
                         (itemsPerDiv * number <= indexs && indexs < itemsPerDiv * (number + 1)) &&
-                        <AnimatePresence>
+                        <motion.div
+                            variants={variantsProjects}
+                            transition={{ duration: 0.5, delay: (0.2 * indexs) }}
+                        >
                             <motion.div
-                                variants={variantsProjects}
-                                transition={{ duration: 0.5, delay: (0.2 * indexs) }}
+                                initial="offscreenCard"
+                                whileHover="onscreenCard"
                             >
-                                <motion.div
-                                    initial="offscreenCard"
-                                    whileHover="onscreenCard"
+                                <Card
+                                    key={indexs}
+                                    style={{
+                                        height: pictHeight, width: pictWidth,
+                                        backgroundImage: `url(${project.main})`,
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: ((matchesM || project.name !== 'Imagine Dragons Fan Page') && project.name !== 'Tournament App') ? 'center center' : (!matchesM && project.name === 'Tournament App') ? '10% center' : '25% center',
+                                    }}
+                                    elevation={0}
                                 >
-                                    <Card
-                                        key={indexs}
-                                        style={{
-                                            height: pictHeight, width: pictWidth,
-                                            backgroundImage: `url(${project.main})`,
-                                            backgroundRepeat: 'no-repeat',
-                                            backgroundSize: 'cover',
-                                            backgroundPosition: ((matchesM || project.name !== 'Imagine Dragons Fan Page') && project.name !== 'Tournament App') ? 'center center' : (!matchesM && project.name === 'Tournament App') ? '10% center' : '25% center',
-                                        }}
-                                        elevation={0}
+                                    <motion.div
+                                        variants={variantsCard}
+                                        className='CardBack'
+                                        transition={{ duration: 0.3 }}
                                     >
                                         <motion.div
-                                            variants={variantsCard}
-                                            className='CardBack'
-                                            transition={{ duration: 0.3 }}
+                                            className='ProjectText'
+                                            variants={variantsTextUp}
+                                            transition={{ duration: 0.5 }}
                                         >
-                                            <motion.div
-                                                className='ProjectText'
-                                                variants={variantsTextUp}
-                                                transition={{ duration: 0.5 }}
-                                            >
-                                                <div className='ProjectTitle'>{project.name}</div>
-                                                <div className='ProjectStack'>{project.stack}</div>
-                                            </motion.div>
-                                            <motion.div
-                                                className='LearnMore'
-                                                transition={{ duration: 0.5 }}
-                                                variants={variantsButtonDown}
-                                                onClick={() => openDialog(project)}
-                                            >
-                                                LEARN MORE
-                                            </motion.div>
+                                            <div className='ProjectTitle'>{project.name}</div>
+                                            <div className='ProjectStack'>{project.stack}</div>
                                         </motion.div>
-                                    </Card>
-                                </motion.div>
+                                        <motion.div
+                                            className='LearnMore'
+                                            transition={{ duration: 0.5 }}
+                                            variants={variantsButtonDown}
+                                            onClick={() => openDialog(project)}
+                                        >
+                                            LEARN MORE
+                                        </motion.div>
+                                    </motion.div>
+                                </Card>
                             </motion.div>
-                        </AnimatePresence>
+                        </motion.div>
                     )
                 })}
             </div >

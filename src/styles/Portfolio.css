@@ -64,7 +64,7 @@
 .ProjectText {
     color: #1b242f;
     text-align: center;
-    z-index: 2;
+    z-index: 0;
 }
 
 .ProjectTitle {
@@ -84,7 +84,7 @@
     width: 170px;
     color: #1b242f;
     text-align: center;
-    z-index: 2;
+    z-index: 0;
     cursor: pointer;
 }
 
