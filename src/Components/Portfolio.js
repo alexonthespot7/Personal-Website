@@ -43,6 +43,8 @@ import id2 from '../pictures/idragons/id2.jpg';
 import id3 from '../pictures/idragons/id3.jpg';
 import id4 from '../pictures/idragons/id4.jpg';
 
+import quizMain from '../pictures/quizhacker/QuizMain.jpg';
+
 import '../styles/Portfolio.css';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -65,6 +67,19 @@ const projects = [
         demo: 'https://bookstore-axos.netlify.app/',
         pictures: [book1, book2, book3, book4, book5, book6, book7, book8],
         main: bookMain
+    },
+    {
+        name: 'QuizHacker',
+        info: "The Quizzes mobile application is built using React Native, with a backend powered by Java Spring and PostgreSQL. The photos for the users’ avatars feature are stored in Firebase storage. The Quizzes app allows users to create and take quizzes on various topics.",
+        category: 'Mobile',
+        stack: 'React Native / Java Spring / PostgreSQL / Google Firebase',
+        github: {
+            frontend: 'https://github.com/alexonthespot7/QuizHackerMobile',
+            backend: 'https://github.com/alexonthespot7/QuizHackerBack'
+        },
+        demo: 'https://expo.dev/@alexonthespot/QuizHack?serviceType=classic&distribution=expo-go',
+        pictures: [quizMain],
+        main: quizMain
     },
     {
         name: 'Calculator',
@@ -400,7 +415,7 @@ function Portfolio() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true, amount: 1 }}
                 >
-                    {['All', 'Full-stack', 'Front-end', 'Back-end'].map((cat, index) => (
+                    {['All', 'Full-stack', 'Front-end', 'Back-end', 'Mobile'].map((cat, index) => (
                         <div key={index} onClick={() => changeCat(cat)} className={category === cat ? 'Category ActiveCat' : 'Category'}>{cat}</div>
                     ))}
                 </motion.div>

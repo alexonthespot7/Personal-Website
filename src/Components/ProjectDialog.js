@@ -35,6 +35,28 @@ function ProjectDialog({ open, setOpen, project }) {
     const matchesAtom = useMediaQuery('(min-width: 350px)');
     const matchesAtom2 = useMediaQuery('(min-width: 330px)');
 
+    const defineQuizHackerPictureHeight = () => {
+        if (matchesM) {
+            return '649px';
+        } else if (matchesM2) {
+            return '541px';
+        } else if (matchesM3) {
+            return '433px';
+        } else if (matchesS) {
+            return '379px';
+        } else if (matchesXS) {
+            return '351px';
+        } else if (matchesXXS) {
+            return '324px';
+        } else if (matchesAtom) {
+            return '297px';
+        } else if (matchesAtom2) {
+            return '270px';
+        } else {
+            return '216px';
+        }
+    }
+
     const definePictureWidth = () => {
         if (matchesM) {
             return '600px';
@@ -101,6 +123,7 @@ function ProjectDialog({ open, setOpen, project }) {
         }
     }
 
+    const quizHackerPictureHeight = defineQuizHackerPictureHeight();
     const pictureWidth = definePictureWidth();
     const pictureHeight = definePictureHeight();
     const carouselWidth = defineCarouselWidth();
@@ -114,7 +137,7 @@ function ProjectDialog({ open, setOpen, project }) {
     const photos = open ? project.pictures.map((picture, index) =>
         <img
             width={pictureWidth}
-            height={pictureHeight}
+            height={project.name !== 'QuizHacker' ? pictureHeight : quizHackerPictureHeight}
             key={index}
             src={picture}
         />
@@ -168,7 +191,7 @@ function ProjectDialog({ open, setOpen, project }) {
         setAnchorEl(null);
     }
 
-    const gitButtons = open ? ((project.category === 'Full-stack') ?
+    const gitButtons = open ? ((['Full-stack', 'Mobile'].includes(project.category)) ?
         (matchesM3 ? <div className='GitButtons'>
             <Button onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>back-end</Button>
             <Button onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>front-end</Button>
