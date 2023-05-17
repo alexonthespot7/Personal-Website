@@ -93,6 +93,14 @@
     background-color: #e31b6d;
 }
 
+@media (max-width:1050px) {
+    .Category {
+        font-size: 14pt;
+        margin: 0 12px;
+        padding: 0 20px;
+    }
+}
+
 @media (max-width:1000px) {
     .PortfolioContainer {
         padding: 50px 0px 65px 0px;
@@ -104,11 +112,13 @@
         margin-top: -10px;
         margin-bottom: 20px;
     }
+}
 
+@media (max-width:660px) {
     .Category {
-        font-size: 14pt;
-        margin: 0 12px;
-        padding: 0 20px;
+        font-size: 13pt;
+        margin: 0 11px;
+        padding: 0 18px;
     }
 }
 
@@ -117,16 +127,9 @@
         margin-top: -10px;
         margin-bottom: 20px;
     }
-
-    .Category {
-        font-size: 14pt;
-        margin: 0 12px;
-        padding: 0 20px;
-    }
 }
 
-@media (max-width:550px) {
-
+@media (max-width:600px) {
     .Category {
         margin: 0 6px;
         padding: 0 10px;
@@ -142,8 +145,23 @@
     }
 }
 
-@media (max-width:325px) {
+@media (max-width:380px) {
+    .Category {
+        font-size: 11pt;
+    }
+}
+
+@media (max-width:350px) {
     .Category {
         font-size: 10pt;
+        padding: 0 4px;
+    }
+}
+
+@media (max-width:320px) {
+    .Category {
+        font-size: 9.5pt;
+        margin: 0 2px;
+        padding: 0 3px;
     }
 }
