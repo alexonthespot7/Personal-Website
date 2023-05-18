@@ -70,7 +70,8 @@ const projects = [
     },
     {
         name: 'QuizHacker',
-        info: "The Quizzes mobile application is built using React Native, with a backend powered by Java Spring and PostgreSQL. The photos for the users’ avatars feature are stored in Firebase storage. The Quizzes app allows users to create and take quizzes on various topics.",
+        info: "Mobile application project made as React Native expo project.",
+        description: "The Quizzes mobile application is built using React Native, with a backend powered by Java Spring and PostgreSQL. The photos for the users’ avatars feature are stored in Firebase storage. The Quizzes app allows users to create and take quizzes on various topics.",
         category: 'Mobile',
         stack: 'React Native / Java Spring / PostgreSQL / Google Firebase',
         github: {
