@@ -2,14 +2,15 @@ import '../styles/ProjectDialog.css';
 
 import { Button, Dialog, DialogContent, Divider, Fade, IconButton, Menu, MenuItem, useMediaQuery } from "@mui/material";
 import Carousel from "nuka-carousel/lib/carousel";
-import React, { useState } from "react";
+import { forwardRef, useState } from "react";
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import LaunchIcon from '@mui/icons-material/Launch';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { SiGoogleplay } from 'react-icons/si';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const Transition = forwardRef(function Transition(props, ref) {
     return <Fade
         timeout={{
             appear: 20000,
@@ -26,109 +27,40 @@ function ProjectDialog({ open, setOpen, project }) {
     const [anchorEl, setAnchorEl] = useState(null);
     const openMenu = Boolean(anchorEl);
 
-    const matchesM = useMediaQuery('(min-width: 680px)');
-    const matchesM2 = useMediaQuery('(min-width: 600px)');
-    const matchesM3 = useMediaQuery('(min-width: 500px)');
-    const matchesS = useMediaQuery('(min-width: 450px)');
-    const matchesXS = useMediaQuery('(min-width: 410px)');
-    const matchesXXS = useMediaQuery('(min-width: 380px)');
-    const matchesAtom = useMediaQuery('(min-width: 350px)');
-    const matchesAtom2 = useMediaQuery('(min-width: 330px)');
-
-    const defineQuizHackerPictureHeight = () => {
-        if (matchesM) {
-            return '649px';
-        } else if (matchesM2) {
-            return '541px';
-        } else if (matchesM3) {
-            return '433px';
-        } else if (matchesS) {
-            return '379px';
-        } else if (matchesXS) {
-            return '351px';
-        } else if (matchesXXS) {
-            return '324px';
-        } else if (matchesAtom) {
-            return '297px';
-        } else if (matchesAtom2) {
-            return '270px';
-        } else {
-            return '216px';
-        }
-    }
+    const matches680px = useMediaQuery('(min-width: 680px)');
+    const matches600px = useMediaQuery('(min-width: 600px)');
+    const matches500px = useMediaQuery('(min-width: 500px)');
+    const matches450px = useMediaQuery('(min-width: 450px)');
+    const matches410px = useMediaQuery('(min-width: 410px)');
+    const matches380px = useMediaQuery('(min-width: 380px)');
+    const matches350px = useMediaQuery('(min-width: 350px)');
+    const matches330px = useMediaQuery('(min-width: 330px)');
 
     const definePictureWidth = () => {
-        if (matchesM) {
-            return '600px';
-        } else if (matchesM2) {
-            return '500px';
-        } else if (matchesM3) {
-            return '400px';
-        } else if (matchesS) {
-            return '350px';
-        } else if (matchesXS) {
-            return '325px';
-        } else if (matchesXXS) {
-            return '300px';
-        } else if (matchesAtom) {
-            return '275px';
-        } else if (matchesAtom2) {
-            return '250px';
+        if (matches680px) {
+            return 600;
+        } else if (matches600px) {
+            return 500;
+        } else if (matches500px) {
+            return 400;
+        } else if (matches450px) {
+            return 350;
+        } else if (matches410px) {
+            return 325;
+        } else if (matches380px) {
+            return 300;
+        } else if (matches350px) {
+            return 275;
+        } else if (matches330px) {
+            return 250;
         } else {
-            return '200px';
+            return 200;
         }
     }
-
-    const definePictureHeight = () => {
-        if (matchesM) {
-            return '300px';
-        } else if (matchesM2) {
-            return '250px';
-        } else if (matchesM3) {
-            return '200px';
-        } else if (matchesS) {
-            return '175px';
-        } else if (matchesXS) {
-            return '162.5px';
-        } else if (matchesXXS) {
-            return '150px';
-        } else if (matchesAtom) {
-            return '137.5px';
-        } else if (matchesAtom2) {
-            return '125px';
-        } else {
-            return '100px';
-        }
-    }
-
-    const defineCarouselWidth = () => {
-        if (matchesM) {
-            return 'auto';
-        } else if (matchesM2) {
-            return '500px'
-        } else if (matchesM3) {
-            return '400px'
-        } else if (matchesS) {
-            return '350px';
-        } else if (matchesXS) {
-            return '325px';
-        } else if (matchesXXS) {
-            return '300px';
-        } else if (matchesAtom) {
-            return '275px';
-        } else if (matchesAtom2) {
-            return '250px';
-        } else {
-            return '200px';
-        }
-    }
-
-    const quizHackerPictureHeight = defineQuizHackerPictureHeight();
     const pictureWidth = definePictureWidth();
-    const pictureHeight = definePictureHeight();
-    const carouselWidth = defineCarouselWidth();
-    const carouselAlign = matchesM ? {} : { display: 'flex', justifyContent: 'center' }
-    const sizeButtons = matchesM2 ? 'medium' : 'small';
+
+    const carouselAlign = matches680px ? {} : { display: 'flex', justifyContent: 'center' }
+    const sizeButtons = matches600px ? 'medium' : 'small';
 
     const handleClose = () => {
         setOpen(false);
@@ -136,8 +68,14 @@ function ProjectDialog({ open, setOpen, project }) {
 
     const photos = open ? project.pictures.map((picture, index) =>
         <img
-            width={pictureWidth}
-            height={project.name !== 'QuizHacker' ? pictureHeight : quizHackerPictureHeight}
+            width={`${pictureWidth}px`}
+            height={
+                !['QuizHacker', 'HEG Race Challenge'].includes(project.name)
+                    ? `${pictureWidth / 2}px`
+                    : project.name !== 'QuizHacker'
+                        ? `${pictureWidth / 1.35}px`
+                        : `${pictureWidth * 1.082}px`
+            }
             key={index}
             src={picture}
         />
@@ -191,40 +129,46 @@ function ProjectDialog({ open, setOpen, project }) {
         setAnchorEl(null);
     }
 
-    const gitButtons = open ? ((['Full-stack', 'Mobile'].includes(project.category)) ?
-        (matchesM3 ? <div className='GitButtons'>
-            <Button onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>back-end</Button>
-            <Button onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>front-end</Button>
-        </div> :
-            <div>
-                <div className='GitButtons'>
-                    <Button onClick={handleClickMenu} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>GitHub</Button>
+    const gitButtons = (open && project.name !== 'HEG Race Challenge')
+        ? ((['Full-stack', 'Mobile'].includes(project.category))
+            ? (matches500px
+                ? <div className='GitButtons'>
+                    <Button onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>back-end</Button>
+                    <Button onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>front-end</Button>
                 </div>
-                <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={openMenu}
-                    onClose={handleCloseMenu}
-                    MenuListProps={{
-                        'aria-labelledby': 'basic-button',
-                    }}
-                >
-                    <MenuItem>
-                        <Button onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>back-end</Button>
-                    </MenuItem>
-                    <MenuItem>
-                        <Button onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>front-end</Button>
-                    </MenuItem>
-                </Menu>
-            </div>) : (project.category === 'Front-end') ?
-            <div>
-                {matchesAtom2 && <Button onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>github</Button>}
-                {!matchesAtom2 && <IconButton onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
-            </div> :
-            <div>
-                {matchesAtom2 && <Button onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>github</Button>}
-                {!matchesAtom2 && <IconButton onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
-            </div>) : <></>;
+                : <div>
+                    <div className='GitButtons'>
+                        <Button onClick={handleClickMenu} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>GitHub</Button>
+                    </div>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={openMenu}
+                        onClose={handleCloseMenu}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem>
+                            <Button onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>back-end</Button>
+                        </MenuItem>
+                        <MenuItem>
+                            <Button onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>front-end</Button>
+                        </MenuItem>
+                    </Menu>
+                </div>
+            )
+            : (project.category === 'Front-end') ?
+                <div>
+                    {matches330px && <Button onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>github</Button>}
+                    {!matches330px && <IconButton onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
+                </div>
+                : <div>
+                    {matches330px && <Button onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>github</Button>}
+                    {!matches330px && <IconButton onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
+                </div>
+        )
+        : <></>;
 
     return (
         <Dialog
@@ -235,7 +179,7 @@ function ProjectDialog({ open, setOpen, project }) {
         >
             {open && <DialogContent>
                 <div style={carouselAlign}>
-                    <div style={{ width: carouselWidth }}>
+                    <div style={{ width: matches680px ? 'auto' : `${pictureWidth}px` }}>
                         <Carousel
                             dragging={false}
                             speed={1250}
@@ -263,7 +207,7 @@ function ProjectDialog({ open, setOpen, project }) {
                         {project.description}
                     </div>
                     <div className='DialogButtons'>
-                        <Button onClick={() => goToLink(project.demo)} size={sizeButtons} variant="contained" sx={{ "&:hover": { backgroundColor: '#e31b6d', filter: 'brightness(70%)' }, backgroundColor: '#e31b6d', color: '#fff', transition: '0.45s' }} startIcon={<LaunchIcon sx={{ color: '#fff' }} />}>{(!matchesM3 && project.category === 'Full-stack') || (!matchesXS) ? 'demo' : 'live demo'}</Button>
+                        <Button startIcon={project.name === 'HEG Race Challenge' ? <SiGoogleplay /> : <LaunchIcon sx={{ color: '#fff' }} />} onClick={() => goToLink(project.demo)} size={sizeButtons} variant="contained" sx={{ "&:hover": { backgroundColor: '#e31b6d', filter: 'brightness(70%)' }, backgroundColor: '#e31b6d', color: '#fff', transition: '0.45s' }}>{project.name !== 'HEG Race Challenge' ? 'demo' : 'google play'}</Button>
                         {gitButtons}
                     </div>
                 </div>

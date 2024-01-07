@@ -16,7 +16,6 @@ import pt1 from '../pictures/personaltrainer/personalTr1.jpg';
 import pt2 from '../pictures/personaltrainer/personalTr2.jpg';
 import pt3 from '../pictures/personaltrainer/personalTr3.jpg';
 import pt4 from '../pictures/personaltrainer/personalTr4.jpg';
-import pt5 from '../pictures/personaltrainer/personalTr5.jpg';
 
 import ttt1 from '../pictures/tictactoe/tictactoe1.jpg';
 import ttt2 from '../pictures/tictactoe/tictactoe2.jpg';
@@ -33,8 +32,6 @@ import tourn5 from '../pictures/tournamentapp/tournament5.jpg';
 import tourn6 from '../pictures/tournamentapp/tournament6.jpg';
 import tourn7 from '../pictures/tournamentapp/tournament7.jpg';
 import tourn8 from '../pictures/tournamentapp/tournament8.jpg';
-import tourn9 from '../pictures/tournamentapp/tournament9.jpg';
-import tourn10 from '../pictures/tournamentapp/tournament10.jpg';
 
 
 import idMain from '../pictures/idragons/idMain.jpg';
@@ -44,6 +41,8 @@ import id3 from '../pictures/idragons/id3.jpg';
 import id4 from '../pictures/idragons/id4.jpg';
 
 import quizMain from '../pictures/quizhacker/QuizMain.jpg';
+
+import raceMain from '../pictures/racechallenge/raceMain.png';
 
 import '../styles/Portfolio.css';
 
@@ -57,7 +56,7 @@ const projects = [
     {
         name: 'Book Store',
         info: 'Full-stack project made with React.js, Java Spring, PostgreSQL, Google Firebase.',
-        description: 'The website for selling books with nice black and white design and all necessary e-commerce functionalities. Database used for this project is PostgreSQL and pictures of the books are stored in Google Firebase.',
+        description: 'The Book Store project with nice black and white design. It provides a diverse range of functionalities catering to book browsing, selection, and ordering, addressing the needs of both customers and administrators.',
         category: 'Full-stack',
         stack: 'React.js / Java Spring / PostgreSQL / Google Firebase',
         github: {
@@ -71,14 +70,14 @@ const projects = [
     {
         name: 'QuizHacker',
         info: "Mobile application project made as React Native expo project.",
-        description: "The Quizzes mobile application is built using React Native, with a backend powered by Java Spring and PostgreSQL. The photos for the users’ avatars feature are stored in Firebase storage. The Quizzes app allows users to create and take quizzes on various topics.",
+        description: "The Quizzes mobile application is built using React Native, with a backend powered by Java Spring. The Quizzes app allows users to create and take quizzes on various topics.",
         category: 'Mobile',
         stack: 'React Native / Java Spring / PostgreSQL / Google Firebase',
         github: {
             frontend: 'https://github.com/alexonthespot7/QuizHackerMobile',
             backend: 'https://github.com/alexonthespot7/QuizHackerBack'
         },
-        demo: 'https://expo.dev/@alexonthespot/QuizHack?serviceType=classic&distribution=expo-go',
+        demo: 'https://github.com/alexonthespot7/QuizHackerMobile/assets/90186057/41948745-502c-432a-b2c3-779b263eaf20',
         pictures: [quizMain],
         main: quizMain
     },
@@ -92,7 +91,7 @@ const projects = [
             frontend: 'https://github.com/alexonthespot7/best-calculatorX',
             backend: '',
         },
-        demo: 'https://alexonthespot-calculator.netlify.app/',
+        demo: 'https://calculator-alex7.netlify.app',
         pictures: [calc1, calc2],
         main: calcMain
     },
@@ -120,23 +119,23 @@ const projects = [
             frontend: 'https://github.com/alexonthespot7/tictactoe-frontend',
             backend: 'https://github.com/alexonthespot7/tictactoe-backend'
         },
-        demo: 'https://tictactoe-axos.netlify.app/',
+        demo: 'https://tic-tac-toe2024.netlify.app/',
         pictures: [ttt1, ttt2, ttt3, ttt4, ttt5],
         main: tttMain
     },
     {
         name: 'Tournament App',
-        info: 'Back-end project made with Java Spring and Thymeleaf, Bootstrap for a very basic front-end.',
-        description: 'This application was made as a school project and allows email registration for competitors, play-off bracket visualisation and personal games history for users. Administrator is able to make draw, set results for the rounds and change users information.',
-        category: 'Back-end',
-        stack: 'Java Spring / PostgreSQL',
+        info: 'Full-stack project made with React.js and Java Spring.',
+        description: 'This application serves as a comprehensive tournament management system. Seamlessly designed for user interaction, it offers a range of functionalities to cater to both tournament participants and administrators.',
+        category: 'Full-stack',
+        stack: 'React.js / Java Spring / PostgreSQL / Docker',
         github: {
-            frontend: '',
-            backend: 'https://github.com/alexonthespot7/tournamentApplication'
+            frontend: 'https://github.com/alexonthespot7/Tournament_front-end',
+            backend: 'https://github.com/alexonthespot7/Tournament_back-end'
         },
-        demo: 'https://tournament-app.herokuapp.com/',
-        pictures: [tourn1, tourn2, tourn3, tourn4, tourn5, tourn6, tourn7, tourn8, tourn9],
-        main: tourn10
+        demo: 'https://tournament-axos.netlify.app',
+        pictures: [tourn2, tourn3, tourn4, tourn5, tourn6, tourn7, tourn8],
+        main: tourn1
     },
     {
         name: 'Personal Trainer',
@@ -148,9 +147,23 @@ const projects = [
             frontend: 'https://github.com/alexonthespot7/personalTrainer',
             backend: ''
         },
-        demo: 'https://alexonthespot-personal-trainer.netlify.app/',
-        pictures: [pt1, pt2, pt3, pt5],
+        demo: 'https://personal-trainer-alex.netlify.app/',
+        pictures: [pt1, pt2, pt3, pt4],
         main: pt4
+    },
+    {
+        name: 'HEG Race Challenge',
+        info: 'Mobile project made with Flutter',
+        description: 'This was a school project in collaboration with swiss HES-SO Valais/Wallis University students. The goal was to learn about mobile applications development and publishing using the flutter framework, while delivering a real project to a client, in our case the HEG school. So, HEG Race Challenge is a mobile game where you drive a car, avoiding obstacles, collecting coins and answering questions about the school to get the best score.',
+        category: 'Mobile',
+        stack: 'Flutter / FlameGame / Google Firebase',
+        github: {
+            frontend: '',
+            backend: ''
+        },
+        demo: 'https://play.google.com/store/apps/details?id=ch.hevs.race_challenges.heg_race_challenges&pcampaignid=web_share',
+        pictures: [raceMain],
+        main: raceMain
     }
 ];
 
@@ -160,14 +173,14 @@ function Portfolio() {
     const [categoriesViewed, setCategoriesViewed] = useState(false);
     const [projectGlobal, setProjectGlobal] = useState(null);
 
-    const matchesL = useMediaQuery("(min-width: 1200px)");
-    const matchesM = useMediaQuery("(min-width: 550px)");
-    const matchesS = useMediaQuery("(min-width: 380px)");
+    const matches1200px = useMediaQuery("(min-width: 1200px)");
+    const matches550px = useMediaQuery("(min-width: 550px)");
+    const matches380px = useMediaQuery("(min-width: 380px)");
 
     const definePictWidth = () => {
-        if (matchesM) {
+        if (matches550px) {
             return '477px';
-        } else if (matchesS) {
+        } else if (matches380px) {
             return '350px';
         } else {
             return '260px';
@@ -180,14 +193,14 @@ function Portfolio() {
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 20,
-        marginBottom: matchesS ? 40 : 0,
+        marginBottom: matches380px ? 40 : 0,
         gap: 40
     }
 
     const definePictHeight = () => {
-        if (matchesM) {
+        if (matches550px) {
             return '400px';
-        } else if (matchesS) {
+        } else if (matches380px) {
             return '427px';
         } else {
             return '317.2px';
@@ -219,7 +232,7 @@ function Portfolio() {
         }
     }
 
-    const itemsPerDiv = matchesL ? 2 : 1;
+    const itemsPerDiv = matches1200px ? 2 : 1;
 
     const divs = Array.from(Array(Math.ceil(projects.length / itemsPerDiv)).keys());
 
@@ -271,12 +284,12 @@ function Portfolio() {
     }
 
     const rowsFiltered = divs.map((number, index) =>
-        <AnimatePresence>
-            <div key={index} style={mainStyle}>
-                {filteredProjects.map((project, indexs) => {
+        <AnimatePresence key={index}>
+            <div style={mainStyle}>
+                {filteredProjects.map((project, projectIndex) => {
                     return (
-                        (itemsPerDiv * number <= indexs && indexs < itemsPerDiv * (number + 1)) &&
-                        <AnimatePresence>
+                        (itemsPerDiv * number <= projectIndex && projectIndex < itemsPerDiv * (number + 1)) &&
+                        <AnimatePresence key={projectIndex}>
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -289,13 +302,12 @@ function Portfolio() {
                                     whileHover='onscreenCard'
                                 >
                                     <Card
-                                        key={indexs}
                                         style={{
                                             height: pictHeight, width: pictWidth,
                                             backgroundImage: `url(${project.main})`,
                                             backgroundRepeat: 'no-repeat',
                                             backgroundSize: 'cover',
-                                            backgroundPosition: ((matchesM || project.name !== 'Imagine Dragons Fan Page') && project.name !== 'Tournament App') ? 'center center' : (!matchesM && project.name === 'Tournament App') ? '10% center' : '25% center',
+                                            backgroundPosition: ((matches550px || project.name !== 'Imagine Dragons Fan Page') && project.name !== 'Tournament App') ? 'center center' : (!matches550px && project.name === 'Tournament App') ? '10% center' : '25% center',
                                         }}
                                         elevation={0}
                                     >
@@ -334,27 +346,27 @@ function Portfolio() {
 
 
     const rows = divs.map((number, index) =>
-        <AnimatePresence>
-            <div key={index} style={mainStyle}>
-                {projects.map((project, indexs) => {
+        <AnimatePresence key={index}>
+            <div style={mainStyle}>
+                {projects.map((project, projectIndex) => {
                     return (
-                        (itemsPerDiv * number <= indexs && indexs < itemsPerDiv * (number + 1)) &&
+                        (itemsPerDiv * number <= projectIndex && projectIndex < itemsPerDiv * (number + 1)) &&
                         <motion.div
+                            key={projectIndex}
                             variants={variantsProjects}
-                            transition={{ duration: 0.5, delay: (0.2 * indexs) }}
+                            transition={{ duration: 0.5, delay: (0.2 * projectIndex) }}
                         >
                             <motion.div
                                 initial="offscreenCard"
                                 whileHover="onscreenCard"
                             >
                                 <Card
-                                    key={indexs}
                                     style={{
                                         height: pictHeight, width: pictWidth,
                                         backgroundImage: `url(${project.main})`,
                                         backgroundRepeat: 'no-repeat',
                                         backgroundSize: 'cover',
-                                        backgroundPosition: ((matchesM || project.name !== 'Imagine Dragons Fan Page') && project.name !== 'Tournament App') ? 'center center' : (!matchesM && project.name === 'Tournament App') ? '10% center' : '25% center',
+                                        backgroundPosition: ((matches550px || project.name !== 'Imagine Dragons Fan Page') && project.name !== 'Tournament App') ? 'center center' : (!matches550px && project.name === 'Tournament App') ? '10% center' : '25% center',
                                     }}
                                     elevation={0}
                                 >
@@ -416,7 +428,7 @@ function Portfolio() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true, amount: 1 }}
                 >
-                    {['All', 'Full-stack', 'Front-end', 'Back-end', 'Mobile'].map((cat, index) => (
+                    {['All', 'Full-stack', 'Front-end', 'Mobile'].map((cat, index) => (
                         <div key={index} onClick={() => changeCat(cat)} className={category === cat ? 'Category ActiveCat' : 'Category'}>{cat}</div>
                     ))}
                 </motion.div>

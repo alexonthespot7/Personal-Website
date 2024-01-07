@@ -22,9 +22,9 @@ export default function MyNav({ active, position, inView }) {
         setOpen(false);
     }
 
-    const matchesS = useMediaQuery("(min-width: 600px)");
+    const matches600px = useMediaQuery("(min-width: 600px)");
 
-    if (matchesS) {
+    if (matches600px) {
         if (position !== 'fixed') {
             return (
                 <div>

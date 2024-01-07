@@ -7,7 +7,7 @@ import { VscOrganization } from 'react-icons/vsc';
 import { FiCheckCircle } from 'react-icons/fi';
 import { IoLogoReact } from 'react-icons/io5';
 import { DiJavascript1 } from 'react-icons/di';
-import { SiSpring } from 'react-icons/si';
+import { SiFlutter, SiSpring } from 'react-icons/si';
 import { DiJava } from 'react-icons/di';
 import { SiPostgresql } from 'react-icons/si';
 import { SiPython } from 'react-icons/si';
@@ -17,11 +17,11 @@ import { motion } from 'framer-motion';
 import useMediaQuery from '../Hooks/useMediaQuery';
 
 export default function About() {
-    const matchesS = useMediaQuery("(min-width: 600px)");
-    const matchesXS = useMediaQuery("(min-width: 500px)");
-    const matchesXXS = useMediaQuery("(min-width: 350px)");
+    const matches600px = useMediaQuery("(min-width: 600px)");
+    const matches500px = useMediaQuery("(min-width: 500px)");
+    const matches350px = useMediaQuery("(min-width: 350px)");
 
-    const picture = matchesXS ?
+    const picture = matches500px ?
         <svg height={250} width={300} viewBox="0 0 120 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <pattern id="img3" patternUnits="userSpaceOnUse" width="120" height="100">
@@ -40,7 +40,7 @@ export default function About() {
             <polygon points="0 40 24 80 72 80 96 40 72 0 24 0" fill="url(#img3)" />
         </svg>
 
-    const firstPolygon = matchesS ?
+    const firstPolygon = matches600px ?
         <svg className='svg1'>
             <polygon fill='#04c2c9' points="0 50 30 100 90 100 120 50 90 0 30 0" />
         </svg> :
@@ -124,13 +124,13 @@ export default function About() {
                 viewport={{ once: true, amount: 0.7 }}
             >
                 <div className='SoftDouble'>
-                    <div className={matchesS ? 'Skill' : 'SkillHard'}>
+                    <div className={matches600px ? 'Skill' : 'SkillHard'}>
                         <motion.div
                             className='Shape'
                             variants={variantsSkills}
                             transition={{ bounce: 0.5, duration: 0.7, ease: 'easeOut' }}
                         >
-                            <ElectricBoltIcon style={{ fontSize: matchesS ? '36pt' : '32pt', color: '#fff', position: 'absolute', margin: matchesS ? '25px auto' : '18px auto' }} />
+                            <ElectricBoltIcon style={{ fontSize: matches600px ? '36pt' : '32pt', color: '#fff', position: 'absolute', margin: matches600px ? '25px auto' : '18px auto' }} />
                             {firstPolygon}
                         </motion.div>
                         <motion.div
@@ -138,7 +138,7 @@ export default function About() {
                             variants={variantsDescription}
                             transition={{ duration: 0.7 }}
                         >
-                            <div className={matchesS ? 'Label' : 'LabelSkill'}>
+                            <div className={matches600px ? 'Label' : 'LabelSkill'}>
                                 Proactive
                             </div>
                             <div className='Description'>
@@ -146,13 +146,13 @@ export default function About() {
                             </div>
                         </motion.div>
                     </div>
-                    <div className={matchesS ? 'Skill' : 'SkillHard'}>
+                    <div className={matches600px ? 'Skill' : 'SkillHard'}>
                         <motion.div
                             className='Shape'
                             variants={variantsSkills}
                             transition={{ bounce: 0.5, duration: 0.7, ease: 'easeOut', delay: 0.2 }}
                         >
-                            <SchoolIcon style={{ fontSize: matchesS ? '36pt' : '32pt', color: '#fff', position: 'absolute', margin: matchesS ? '25px auto' : '18px auto' }} />
+                            <SchoolIcon style={{ fontSize: matches600px ? '36pt' : '32pt', color: '#fff', position: 'absolute', margin: matches600px ? '25px auto' : '18px auto' }} />
                             {firstPolygon}
                         </motion.div>
                         <motion.div
@@ -160,7 +160,7 @@ export default function About() {
                             variants={variantsDescription}
                             transition={{ duration: 0.7, delay: 0.2 }}
                         >
-                            <div className={matchesS ? 'Label' : 'LabelSkill'}>
+                            <div className={matches600px ? 'Label' : 'LabelSkill'}>
                                 Quick Learner
                             </div>
                             <div className='Description'>
@@ -170,13 +170,13 @@ export default function About() {
                     </div>
                 </div>
                 <div className='SoftDouble'>
-                    <div className={matchesS ? 'Skill' : 'SkillHard'}>
+                    <div className={matches600px ? 'Skill' : 'SkillHard'}>
                         <motion.div
                             className='Shape'
                             variants={variantsSkills}
                             transition={{ bounce: 0.5, duration: 0.7, ease: 'easeOut', delay: 0.4 }}
                         >
-                            <VscOrganization className={matchesS ? 'Icon' : 'IconHard'} />
+                            <VscOrganization className={matches600px ? 'Icon' : 'IconHard'} />
                             {firstPolygon}
                         </motion.div>
                         <motion.div
@@ -184,7 +184,7 @@ export default function About() {
                             variants={variantsDescription}
                             transition={{ duration: 0.7, delay: 0.4 }}
                         >
-                            <div className={matchesS ? 'Label' : 'LabelSkill'}>
+                            <div className={matches600px ? 'Label' : 'LabelSkill'}>
                                 Team Player
                             </div>
                             <div className='Description'>
@@ -192,13 +192,13 @@ export default function About() {
                             </div>
                         </motion.div>
                     </div>
-                    <div className={matchesS ? 'Skill' : 'SkillHard'}>
+                    <div className={matches600px ? 'Skill' : 'SkillHard'}>
                         <motion.div
                             className='Shape'
                             variants={variantsSkills}
                             transition={{ bounce: 0.5, duration: 0.7, ease: 'easeOut', delay: 0.6 }}
                         >
-                            <FiCheckCircle className={matchesS ? 'Icon' : 'IconHard'} />
+                            <FiCheckCircle className={matches600px ? 'Icon' : 'IconHard'} />
                             {firstPolygon}
                         </motion.div>
                         <motion.div
@@ -206,7 +206,7 @@ export default function About() {
                             variants={variantsDescription}
                             transition={{ duration: 0.7, delay: 0.6 }}
                         >
-                            <div className={matchesS ? 'Label' : 'LabelSkill'}>
+                            <div className={matches600px ? 'Label' : 'LabelSkill'}>
                                 Well-organized
                             </div>
                             <div className='Description'>
@@ -228,7 +228,7 @@ export default function About() {
                         Who am I?
                     </div>
                     <div style={{ textAlign: 'center' }} className='Description'>
-                        I am a second year Business IT student in Haaga-Helia with major in Software Development and <span style={{ fontWeight: 900, color: '#e31b6d' }}>GPA 5.0/5.0</span>. During the continuity of my studies I have successfully completed several front-end, back-end and full-stack projects.<span style={{ color: '#e31b6d', fontWeight: 900 }}> Currently </span> I am looking for an entry level software developer position.
+                        I am a third year Business IT student in Haaga-Helia with major in Software Development and <span style={{ fontWeight: 900, color: '#e31b6d' }}>GPA 5.0/5.0</span>. During the continuity of my studies I have successfully completed several front-end, back-end and full-stack projects.<span style={{ color: '#e31b6d', fontWeight: 900 }}> Currently </span> I am looking for an entry level software developer position.
                     </div>
                 </motion.div>
                 <motion.div
@@ -243,7 +243,7 @@ export default function About() {
                                 <IoLogoReact className='IconHard' />
                                 {secondPolygon}
                             </div>
-                            <div className={matchesXXS ? 'TextDiv' : 'SmallTextDiv'}>
+                            <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
                                     React
                                 </div>
@@ -254,7 +254,7 @@ export default function About() {
                                 <DiJavascript1 className='IconHard' />
                                 {secondPolygon}
                             </div>
-                            <div className={matchesXXS ? 'TextDiv' : 'SmallTextDiv'}>
+                            <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
                                     JavaScript
                                 </div>
@@ -267,7 +267,7 @@ export default function About() {
                                 <SiSpring className='IconHard' />
                                 {secondPolygon}
                             </div>
-                            <div className={matchesXXS ? 'TextDiv' : 'SmallTextDiv'}>
+                            <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
                                     Spring Boot
                                 </div>
@@ -278,7 +278,7 @@ export default function About() {
                                 <DiJava style={{ margin: '14px auto' }} className='IconHard' />
                                 {secondPolygon}
                             </div>
-                            <div className={matchesXXS ? 'TextDiv' : 'SmallTextDiv'}>
+                            <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
                                     Java
                                 </div>
@@ -291,9 +291,9 @@ export default function About() {
                                 <SiPostgresql style={{ margin: '22px auto' }} className='IconHard' />
                                 {secondPolygon}
                             </div>
-                            <div className={matchesXXS ? 'TextDiv' : 'SmallTextDiv'}>
+                            <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
-                                    PostgreSQL
+                                    SQL
                                 </div>
                             </div>
                         </div>
@@ -302,9 +302,33 @@ export default function About() {
                                 <SiPython className='IconHard' />
                                 {secondPolygon}
                             </div>
-                            <div className={matchesXXS ? 'TextDiv' : 'SmallTextDiv'}>
+                            <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
                                     Python
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style={{ display: 'flex' }}>
+                        <div className='SkillHard'>
+                            <div className='Shape'>
+                                <IoLogoReact className='IconHard' />
+                                {secondPolygon}
+                            </div>
+                            <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
+                                <div className='LabelSkill'>
+                                    React Native
+                                </div>
+                            </div>
+                        </div>
+                        <div className='SkillHard'>
+                            <div className='Shape'>
+                                <SiFlutter className='IconHard' />
+                                {secondPolygon}
+                            </div>
+                            <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
+                                <div className='LabelSkill'>
+                                    Flutter
                                 </div>
                             </div>
                         </div>

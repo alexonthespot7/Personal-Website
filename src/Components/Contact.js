@@ -4,17 +4,20 @@ import { motion } from 'framer-motion';
 import { forwardRef, useState } from 'react';
 import { Input, Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
+import { send } from '@emailjs/browser';
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+const initialSms = {
+    name: '',
+    message: '',
+    email: ''
+}
+
 function Contact() {
-    const [sms, setSms] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
+    const [sms, setSms] = useState(initialSms);
     const [action, setAction] = useState(false);
     const [type, setType] = useState('');
     const [msg, setMsg] = useState('');
@@ -46,48 +49,49 @@ function Contact() {
     }
 
     const sendMail = () => {
-        fetch(process.env.REACT_APP_API_URL + 'sendmail', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(sms)
-        })
+        send('service_5a0z8r3', 'contact_form', sms, process.env.EMAIL_PUBLIC_KEY)
             .then(response => {
-                if (response.ok) {
-                    setAction(true);
-                    setType('success');
-                    setMsg('Your message was successfully sent');
-                    setSms({
-                        name: '',
-                        email: '',
-                        message: ''
-                    });
-                } else {
+                if (!response.status === 200) {
                     setAction(true);
                     setType('error');
                     setMsg('Your message cannot be sent at the moment');
+                    return null;
                 }
-            })
-            .catch(err => console.error(err));
+                setSms({ ...initialSms });
+                setAction(true);
+                setType('success');
+                setMsg('Your message was successfully sent');
+            }, error => {
+                console.error('FAILED...', error);
+                setAction(true);
+                setType('error');
+                setMsg('Your message cannot be sent at the moment');
+            });
+    }
+
+    const isValidEmail = (email) => {
+        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return pattern.test(email);
     }
 
     const submitMessage = () => {
-        if (sms.name === '') {
-            setAction(true);
-            setType('info');
-            setMsg('Name field cannot be empty');
-        } else if (sms.email === '') {
-            setAction(true);
-            setType('info');
-            setMsg('Email field cannot be empty');
-        } else if (sms.message === '') {
-            setAction(true);
-            setType('info');
-            setMsg('Message field cannot be empty');
-        } else {
-            sendMail();
+        for (const field of Object.keys(sms)) {
+            if (sms[field] === '') {
+                setAction(true);
+                setType('info');
+                setMsg(`${field.charAt(0).toUpperCase() + field.slice(1)} field cannot be empty`);
+                return null;
+            }
         }
+
+        if (!isValidEmail(sms.email)) {
+            setAction(true);
+            setType('info');
+            setMsg(`Please provide a valid email`);
+            return null;
+        }
+
+        sendMail();
     }
 
     return (
@@ -124,15 +128,9 @@ function Contact() {
                 className="Form"
             >
                 <div className='InputDiv'>
-                    <Input disableUnderline style={{ color: '#fff' }} onChange={inputChanged} className='Input' placeholder='Name' type='text' name='name'>
-                        {sms.name}
-                    </Input>
-                    <Input disableUnderline style={{ color: '#fff' }} onChange={inputChanged} className='Input' placeholder='Your Email' type='email' name='email'>
-                        {sms.email}
-                    </Input>
-                    <Input multiline disableUnderline style={{ display: 'flex', alignItems: 'flex-start', color: '#fff', padding: '10px 15px', marginBottom: '5px', minHeight: '150px' }} onChange={inputChanged} className='Input' placeholder='Your message' type='text' name='message'>
-                        {sms.message}
-                    </Input>
+                    <Input value={sms.name} disableUnderline style={{ color: '#fff' }} onChange={inputChanged} className='Input' placeholder='Name' type='text' name='name' />
+                    <Input value={sms.email} disableUnderline style={{ color: '#fff' }} onChange={inputChanged} className='Input' placeholder='Your Email' type='email' name='email' />
+                    <Input value={sms.message} multiline disableUnderline style={{ display: 'flex', alignItems: 'flex-start', color: '#fff', padding: '10px 15px', marginBottom: '5px', minHeight: '150px' }} onChange={inputChanged} className='Input' placeholder='Your message' type='text' name='message' />
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                         <button onClick={submitMessage} className='Send'>SEND</button>
                     </div>

@@ -15,14 +15,14 @@ export default function Header() {
         hover: { rotate: 90 },
     }
 
-    const matchesFirst = useMediaQuery("(min-width: 750px)");
-    const matchesSecond = useMediaQuery("(min-width: 620px)");
-    const matchesThird = useMediaQuery("(min-width: 520px)");
-    const matchesFourth = useMediaQuery("(min-width: 360px)");
+    const matches750px = useMediaQuery("(min-width: 750px)");
+    const matches620px = useMediaQuery("(min-width: 620px)");
+    const matches520px = useMediaQuery("(min-width: 520px)");
+    const matches360px = useMediaQuery("(min-width: 360px)");
 
 
     const defineArrowSize = () => {
-        return matchesFirst ? '18pt' : matchesSecond ? '16pt' : matchesThird ? '14pt' : matchesFourth ? '12pt' : '10pt';
+        return matches750px ? '18pt' : matches620px ? '16pt' : matches520px ? '14pt' : matches360px ? '12pt' : '10pt';
     }
     const arrowSize = defineArrowSize();
 

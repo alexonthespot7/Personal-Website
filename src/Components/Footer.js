@@ -13,9 +13,9 @@ export default function Footer() {
         window.open(link);
     }
 
-    const matchesXXS = useMediaQuery("(min-width: 350px)");
+    const matches350px = useMediaQuery("(min-width: 350px)");
 
-    const iconSize = matchesXXS ? 24 : 19.2;
+    const iconSize = matches350px ? 24 : 19.2;
 
     return (
         <div className="FooterContainer">
