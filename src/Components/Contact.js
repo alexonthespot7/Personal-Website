@@ -1,7 +1,7 @@
 import '../styles/Contact.css'
 
 import { motion } from 'framer-motion';
-import { forwardRef, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import { Input, Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import { send } from '@emailjs/browser';
@@ -21,6 +21,10 @@ function Contact() {
     const [action, setAction] = useState(false);
     const [type, setType] = useState('');
     const [msg, setMsg] = useState('');
+
+    useEffect(() => {
+        console.log(process.env.REACT_APP_API_URL);
+    }, []);
 
     const variantsHeader = {
         offscreen: {
