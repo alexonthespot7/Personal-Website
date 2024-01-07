@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Personal Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> React.js project. My personal website-portfolio + self-presentation.<br>
+> <br>
+> The website can be found here [https://aleksei-shevelenkov.netlify.app](https://aleksei-shevelenkov.netlify.app/)
 
-## Available Scripts
+## Table of Contents
+* [Usage Guide](#usage-guide)
+* [Technologies Used](#technologies-used)
+* [Dependencies](#dependencies)
+* [Screenshots](#screenshots)
 
-In the project directory, you can run:
+## Usage Guide
+1. Clone the project <br>
+  ```git clone https://github.com/alexonthespot7/Personal-Website.git```<br>
+2. Run the following command in a terminal window (in the complete) directory:<br>
+  ```npm install```<br>
+3. Run the following command in a terminal window (in the complete) directory:<br>
+  ```npm start```<br>
+4. Navigate to localhost:3000
 
-### `npm start`
+## Technologies Used
+- React.js
+- css
+  
+## Dependencies
+- [@mui/icons-material](https://www.npmjs.com/package/@mui/icons-material) (^5.11.0): Material-UI Icons library for customizable icons following Material Design guidelines.
+- [@mui/material](https://www.npmjs.com/package/@mui/material) (^5.11.7): Material-UI framework providing pre-designed React components.
+- [framer-motion](https://www.npmjs.com/package/framer-motion) (^9.0.1): Library facilitating smooth animations and motion design for React components.
+- [nuka-carousel](https://www.npmjs.com/package/nuka-carousel) (^5.4.1): React-based carousel component offering carousel functionalities.
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom) (^6.8.1): Declarative routing for navigation and view handling in React.
+- [react-icons](https://www.npmjs.com/package/react-icons) (^4.7.1): Offers a rich assortment of ready-to-use icons for React applications, enhancing UI with a diverse set of iconography.
+- [@emailjs/browser](https://www.npmjs.com/package/@emailjs/browser) (^3.11.0): Simplifies client-side email sending from JavaScript apps, enabling effortless integration of email functionalities.
+- [react-router-hash-link](https://www.npmjs.com/package/react-router-hash-link) (^2.4.3): Extends React Router to navigate smoothly to anchor links within single-page applications, aiding in seamless scrolling to specific sections.
+- [react-transition-group](https://www.npmjs.com/package/react-transition-group) (^4.4.5): Facilitates component transitions in React apps, empowering the creation of engaging UI animations during state changes.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Screenshots
+![pw_main](https://github.com/alexonthespot7/Personal-Website/assets/90186057/23b04734-9308-48f8-9ccd-eb928d5e496d)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![pw_about1](https://github.com/alexonthespot7/Personal-Website/assets/90186057/55635bf3-3318-4ceb-b2ab-5582decb9778)
 
-### `npm test`
+![pw_about2](https://github.com/alexonthespot7/Personal-Website/assets/90186057/785ed311-def4-48d8-8478-a23659c9241c)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![pw_portfolio1](https://github.com/alexonthespot7/Personal-Website/assets/90186057/4a14b139-f69e-4a51-b39c-0d12a04fe639)
 
-### `npm run build`
+![pw_portfolio2](https://github.com/alexonthespot7/Personal-Website/assets/90186057/570adf59-9c07-415f-bfce-8042acfe376e)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![pw_contact](https://github.com/alexonthespot7/Personal-Website/assets/90186057/5a45d02f-5407-4a16-a5c1-d784cbf6e64f)
