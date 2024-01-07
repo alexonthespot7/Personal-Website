@@ -22,9 +22,7 @@ function Contact() {
     const [type, setType] = useState('');
     const [msg, setMsg] = useState('');
 
-    useEffect(() => {
-        console.log(process.env.REACT_APP_API_URL);
-    }, []);
+    const publicKey = process.env.REACT_APP_API_URL;
 
     const variantsHeader = {
         offscreen: {
@@ -53,7 +51,7 @@ function Contact() {
     }
 
     const sendMail = () => {
-        send('service_5a0z8r3', 'contact_form', sms, process.env.EMAIL_PUBLIC_KEY)
+        send('service_5a0z8r3', 'contact_form', sms, publicKey)
             .then(response => {
                 if (!response.status === 200) {
                     setAction(true);
