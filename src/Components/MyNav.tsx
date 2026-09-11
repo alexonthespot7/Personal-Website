@@ -38,7 +38,8 @@ export default function MyNav({ active, position, inView }: MyNavProps) {
                         <Toolbar sx={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center' }} >
                             <HashLink smooth to="#" className={active === 'Home' ? 'active' : 'link'}>HOME</HashLink>
                             <HashLink smooth to="#About" className={active === 'About' ? 'active' : 'link'}>ABOUT</HashLink>
-                            <HashLink smooth to="#Projects" className={active === 'Port' ? 'active' : 'link'}>PORTFOLIO</HashLink>
+                            <HashLink smooth to="#Experience" className={active === 'Experience' ? 'active' : 'link'}>EXPERIENCE</HashLink>
+                            <HashLink smooth to="#Projects" className={active === 'Portfolio' ? 'active' : 'link'}>PORTFOLIO</HashLink>
                             <HashLink smooth to="#Contact" className={active === 'Contact' ? 'active' : 'link'}>CONTACT</HashLink>
                         </Toolbar>
                     </AppBar>
@@ -52,6 +53,7 @@ export default function MyNav({ active, position, inView }: MyNavProps) {
                             <Toolbar sx={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center' }} >
                                 <HashLink smooth to="#Home" className={active === 'Home' ? 'active' : 'link'}>HOME</HashLink>
                                 <HashLink smooth to="#About" className={active === 'About' ? 'active' : 'link'}>ABOUT</HashLink>
+                                <HashLink smooth to="#Experience" className={active === 'Experience' ? 'active' : 'link'}>EXPERIENCE</HashLink>
                                 <HashLink smooth to="#Projects" className={active === 'Portfolio' ? 'active' : 'link'}>PORTFOLIO</HashLink>
                                 <HashLink smooth to="#Contact" className={active === 'Contact' ? 'active' : 'link'}>CONTACT</HashLink>
                             </Toolbar>
@@ -74,6 +76,7 @@ export default function MyNav({ active, position, inView }: MyNavProps) {
                     <div className={`Nav ${open && "Active"}`}>
                         <HashLink onClick={handleClose} smooth to="#Home" className={active === 'Home' ? 'active Mini Home' : 'link Mini Home'}>HOME</HashLink>
                         <HashLink onClick={handleClose} smooth to="#About" className={active === 'About' ? 'active Mini' : 'link Mini'}>ABOUT</HashLink>
+                        <HashLink onClick={handleClose} smooth to="#Experience" className={active === 'Experience' ? 'active Mini' : 'link Mini'}>EXPERIENCE</HashLink>
                         <HashLink onClick={handleClose} smooth to="#Projects" className={active === 'Portfolio' ? 'active Mini' : 'link Mini'}>PORTFOLIO</HashLink>
                         <HashLink onClick={handleClose} smooth to="#Contact" className={active === 'Contact' ? 'active Mini' : 'link Mini'}>CONTACT</HashLink>
                     </div>
