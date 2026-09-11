@@ -205,7 +205,9 @@ function ProjectDialog({ open, setOpen, project }: ProjectDialogProps) {
                         {project.description}
                     </div>
                     <div className='DialogButtons'>
-                        <Button startIcon={project.name === 'HEG Race Challenge' ? <SiGoogleplay /> : <LaunchIcon sx={{ color: '#fff' }} />} onClick={() => goToLink(project.demo)} size={sizeButtons} variant="contained" sx={{ "&:hover": { backgroundColor: '#e31b6d', filter: 'brightness(70%)' }, backgroundColor: '#e31b6d', color: '#fff', transition: '0.45s' }}>{project.name !== 'HEG Race Challenge' ? 'demo' : 'google play'}</Button>
+                        {!['Book Store', 'Tournament App'].includes(project.name) &&
+                            <Button startIcon={project.name === 'HEG Race Challenge' ? <SiGoogleplay /> : <LaunchIcon sx={{ color: '#fff' }} />} onClick={() => goToLink(project.demo)} size={sizeButtons} variant="contained" sx={{ "&:hover": { backgroundColor: '#e31b6d', filter: 'brightness(70%)' }, backgroundColor: '#e31b6d', color: '#fff', transition: '0.45s' }}>{project.name !== 'HEG Race Challenge' ? 'demo' : 'google play'}</Button>
+                        }
                         {gitButtons}
                     </div>
                 </div>
