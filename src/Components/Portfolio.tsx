@@ -12,11 +12,6 @@ import calc1 from '../pictures/calculator/calculator1.jpg';
 import calc2 from '../pictures/calculator/calculator2.jpg';
 import calcMain from '../pictures/calculator/calculatorMain.jpg';
 
-import pt1 from '../pictures/personaltrainer/personalTr1.jpg';
-import pt2 from '../pictures/personaltrainer/personalTr2.jpg';
-import pt3 from '../pictures/personaltrainer/personalTr3.jpg';
-import pt4 from '../pictures/personaltrainer/personalTr4.jpg';
-
 import ttt1 from '../pictures/tictactoe/tictactoe1.jpg';
 import ttt2 from '../pictures/tictactoe/tictactoe2.jpg';
 import ttt3 from '../pictures/tictactoe/tictactoe3.jpg';
@@ -33,12 +28,6 @@ import tourn6 from '../pictures/tournamentapp/tournament6.jpg';
 import tourn7 from '../pictures/tournamentapp/tournament7.jpg';
 import tourn8 from '../pictures/tournamentapp/tournament8.jpg';
 
-
-import idMain from '../pictures/idragons/idMain.jpg';
-import id1 from '../pictures/idragons/id1.jpg';
-import id2 from '../pictures/idragons/id2.jpg';
-import id3 from '../pictures/idragons/id3.jpg';
-import id4 from '../pictures/idragons/id4.jpg';
 
 import quizMain from '../pictures/quizhacker/QuizMain.jpg';
 
@@ -97,20 +86,6 @@ const projects: Project[] = [
         main: calcMain
     },
     {
-        name: 'Imagine Dragons Fan Page',
-        info: 'Vanilla Front-end HTML and CSS project.',
-        description: 'School project. Imagine Dragons fan website with tracklists of their albums and several music videos. Each album page styled as the album cover.',
-        category: 'Front-end',
-        stack: 'HTML / CSS',
-        github: {
-            frontend: 'https://github.com/alexonthespot7/imagine_dragons_fan_page.github.io',
-            backend: ''
-        },
-        demo: 'https://alexonthespot7.github.io/imagine_dragons_fan_page.github.io/index.html',
-        pictures: [id1, id2, id3, id4],
-        main: idMain
-    },
-    {
         name: 'Tic-tac-toe',
         info: 'Full-stack project made with React.js and Java Spring.',
         description: 'Application has two game modes: one is to play against your friend on the same device (PvP) and the other one is to play against bot if you don\'t have your friend with you. Bot is written with the implementation of MiniMax algorithm and has 3 difficulty levels. The back-end of the project is deployed as dockerfile.',
@@ -125,34 +100,6 @@ const projects: Project[] = [
         main: tttMain
     },
     {
-        name: 'Tournament App',
-        info: 'Full-stack project made with React.js and Java Spring.',
-        description: 'This application serves as a comprehensive tournament management system. Seamlessly designed for user interaction, it offers a range of functionalities to cater to both tournament participants and administrators.',
-        category: 'Full-stack',
-        stack: 'React.js / Java Spring / PostgreSQL / Docker',
-        github: {
-            frontend: 'https://github.com/alexonthespot7/Tournament_front-end',
-            backend: 'https://github.com/alexonthespot7/Tournament_back-end'
-        },
-        demo: 'https://tournament-axos.netlify.app',
-        pictures: [tourn2, tourn3, tourn4, tourn5, tourn6, tourn7, tourn8],
-        main: tourn1
-    },
-    {
-        name: 'Personal Trainer',
-        info: 'Front-end project made with React.js.',
-        description: 'School project that fetches data about users and their trainings from server and displays it in a nice way with statistics, calendar, trainings and personal pages.',
-        category: 'Front-end',
-        stack: 'React.js',
-        github: {
-            frontend: 'https://github.com/alexonthespot7/personalTrainer',
-            backend: ''
-        },
-        demo: 'https://personal-trainer-alex.netlify.app/',
-        pictures: [pt1, pt2, pt3, pt4],
-        main: pt4
-    },
-    {
         name: 'HEG Race Challenge',
         info: 'Mobile project made with Flutter',
         description: 'This was a school project in collaboration with swiss HES-SO Valais/Wallis University students. The goal was to learn about mobile applications development and publishing using the flutter framework, while delivering a real project to a client, in our case the HEG school. So, HEG Race Challenge is a mobile game where you drive a car, avoiding obstacles, collecting coins and answering questions about the school to get the best score.',
@@ -165,6 +112,20 @@ const projects: Project[] = [
         demo: 'https://play.google.com/store/apps/details?id=ch.hevs.race_challenges.heg_race_challenges&pcampaignid=web_share',
         pictures: [raceMain],
         main: raceMain
+    },
+    {
+        name: 'Tournament App',
+        info: 'Full-stack project made with React.js and Java Spring.',
+        description: 'This application serves as a comprehensive tournament management system. Seamlessly designed for user interaction, it offers a range of functionalities to cater to both tournament participants and administrators.',
+        category: 'Full-stack',
+        stack: 'React.js / Java Spring / PostgreSQL / Docker',
+        github: {
+            frontend: 'https://github.com/alexonthespot7/Tournament_front-end',
+            backend: 'https://github.com/alexonthespot7/Tournament_back-end'
+        },
+        demo: 'https://tournament-axos.netlify.app',
+        pictures: [tourn2, tourn3, tourn4, tourn5, tourn6, tourn7, tourn8],
+        main: tourn1
     }
 ];
 
@@ -308,7 +269,7 @@ function Portfolio() {
                                             backgroundImage: `url(${project.main})`,
                                             backgroundRepeat: 'no-repeat',
                                             backgroundSize: 'cover',
-                                            backgroundPosition: ((matches550px || project.name !== 'Imagine Dragons Fan Page') && project.name !== 'Tournament App') ? 'center center' : (!matches550px && project.name === 'Tournament App') ? '10% center' : '25% center',
+                                            backgroundPosition: project.name !== 'Tournament App' ? 'center center' : (!matches550px ? '10% center' : '25% center'),
                                         }}
                                         elevation={0}
                                     >
@@ -367,7 +328,7 @@ function Portfolio() {
                                         backgroundImage: `url(${project.main})`,
                                         backgroundRepeat: 'no-repeat',
                                         backgroundSize: 'cover',
-                                        backgroundPosition: ((matches550px || project.name !== 'Imagine Dragons Fan Page') && project.name !== 'Tournament App') ? 'center center' : (!matches550px && project.name === 'Tournament App') ? '10% center' : '25% center',
+                                        backgroundPosition: project.name !== 'Tournament App' ? 'center center' : (!matches550px ? '10% center' : '25% center'),
                                     }}
                                     elevation={0}
                                 >
