@@ -1,36 +1,10 @@
 import '../styles/Contact.css'
 
 import { motion, Transition } from 'framer-motion';
-import React, { forwardRef, useEffect, useState } from 'react';
-import { Input, Snackbar } from '@mui/material';
-import MuiAlert, { AlertColor, AlertProps } from '@mui/material/Alert';
-import { send } from '@emailjs/browser';
-
-const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
-
-interface Sms {
-    name: string;
-    message: string;
-    email: string;
-    [key: string]: string;
-}
-
-const initialSms: Sms = {
-    name: '',
-    message: '',
-    email: ''
-}
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
 
 function Contact() {
-    const [sms, setSms] = useState<Sms>(initialSms);
-    const [action, setAction] = useState(false);
-    const [type, setType] = useState<AlertColor | ''>('');
-    const [msg, setMsg] = useState('');
-
-    const publicKey = import.meta.env.VITE_API_URL;
-
     const variantsHeader = {
         offscreen: {
             opacity: 0,
@@ -51,56 +25,6 @@ function Contact() {
             x: 0,
             opacity: 1,
         }
-    }
-
-    const inputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSms({ ...sms, [event.target.name]: event.target.value });
-    }
-
-    const sendMail = () => {
-        send('service_5a0z8r3', 'contact_form', sms, publicKey)
-            .then(response => {
-                if (response.status !== 200) {
-                    setAction(true);
-                    setType('error');
-                    setMsg('Your message cannot be sent at the moment');
-                    return null;
-                }
-                setSms({ ...initialSms });
-                setAction(true);
-                setType('success');
-                setMsg('Your message was successfully sent');
-            }, error => {
-                console.error('FAILED...', error);
-                setAction(true);
-                setType('error');
-                setMsg('Your message cannot be sent at the moment');
-            });
-    }
-
-    const isValidEmail = (email: string) => {
-        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return pattern.test(email);
-    }
-
-    const submitMessage = () => {
-        for (const field of Object.keys(sms)) {
-            if (sms[field] === '') {
-                setAction(true);
-                setType('info');
-                setMsg(`${field.charAt(0).toUpperCase() + field.slice(1)} field cannot be empty`);
-                return null;
-            }
-        }
-
-        if (!isValidEmail(sms.email)) {
-            setAction(true);
-            setType('info');
-            setMsg(`Please provide a valid email`);
-            return null;
-        }
-
-        sendMail();
     }
 
     return (
@@ -134,22 +58,17 @@ function Contact() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8 }}
-                className="Form"
+                className="ContactDetails"
             >
-                <div className='InputDiv'>
-                    <Input value={sms.name} disableUnderline style={{ color: '#fff' }} onChange={inputChanged} className='Input' placeholder='Name' type='text' name='name' />
-                    <Input value={sms.email} disableUnderline style={{ color: '#fff' }} onChange={inputChanged} className='Input' placeholder='Your Email' type='email' name='email' />
-                    <Input value={sms.message} multiline disableUnderline style={{ display: 'flex', alignItems: 'flex-start', color: '#fff', padding: '10px 15px', marginBottom: '5px', minHeight: '150px' }} onChange={inputChanged} className='Input' placeholder='Your message' type='text' name='message' />
-                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <button onClick={submitMessage} className='Send'>SEND</button>
-                    </div>
-                </div>
+                <a href="tel:+358417934141" className='ContactItem'>
+                    <PhoneIcon />
+                    <span>+358 41 793 4141</span>
+                </a>
+                <a href="mailto:aleksei.shevelenkov@gmail.com" className='ContactItem'>
+                    <EmailIcon />
+                    <span>aleksei.shevelenkov@gmail.com</span>
+                </a>
             </motion.div>
-            <Snackbar open={action} autoHideDuration={3000} onClose={() => setAction(false)}>
-                <Alert onClose={() => setAction(false)} severity={type as AlertColor} sx={{ width: '100%' }}>
-                    {msg}
-                </Alert>
-            </Snackbar>
         </div>
     );
 }

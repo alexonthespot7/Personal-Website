@@ -31,55 +31,36 @@
     font-size: 12pt;
 }
 
-.Form {
+.ContactDetails {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 20px;
     margin: 40px auto 0 auto;
-    width: 500px;
 }
 
-.InputDiv {
-    display: flex;
-    flex-direction: column;
-}
-
-.Input {
-    background: #1e242c;
-    border: 0;
-    box-sizing: border-box;
-    display: block;
-    font-size: 12pt;
-    margin-bottom: 3px;
-    outline: none;
-    padding: 10px 15px;
-    width: 100%;
-}
-
-.Send {
-    background: transparent;
+.ContactItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
     color: #fff;
-    font-size: 12pt;
-    margin: 5px 0 0 0;
-    padding: 10px 30px;
+    font-size: 13pt;
+    padding: 12px 30px;
     border: 2px solid #fff;
+    text-decoration: none;
     cursor: pointer;
     transition: 0.5s;
 }
 
-.Send:hover {
+.ContactItem:hover {
     background: #04c2c9;
     border: 2px solid #04c2c9;
 }
 
 @media (max-width:550px) {
-    .Form {
-        width: 90%;
-    }
-
-    .Send {
+    .ContactItem {
         font-size: 12pt;
-        margin: 5px 0 0 0;
-        padding: 8px 24px;
+        padding: 10px 24px;
     }
 
     .ContactLine {
@@ -96,18 +77,14 @@
         font-size: 11pt;
     }
 
-    .Form {
+    .ContactDetails {
         margin-top: 20px;
+        gap: 15px;
     }
 
-    .Input {
+    .ContactItem {
         font-size: 11pt;
-        padding: 10px 15px;
-    }
-
-    .Send {
-        font-size: 11pt;
-        padding: 6px 20px;
+        padding: 8px 20px;
     }
 }
 
