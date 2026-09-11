@@ -3,14 +3,10 @@ import me from '../pictures/Me.jpg';
 
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import SchoolIcon from '@mui/icons-material/School';
-import { VscOrganization } from 'react-icons/vsc';
+import { VscOrganization, VscAzure } from 'react-icons/vsc';
 import { FiCheckCircle } from 'react-icons/fi';
 import { IoLogoReact } from 'react-icons/io5';
-import { DiJavascript1 } from 'react-icons/di';
-import { SiFlutter, SiSpring } from 'react-icons/si';
-import { DiJava } from 'react-icons/di';
-import { SiPostgresql } from 'react-icons/si';
-import { SiPython } from 'react-icons/si';
+import { SiFlutter, SiTypescript, SiDotnet, SiPostgresql, SiClaude } from 'react-icons/si';
 
 
 import { motion, Transition } from 'framer-motion';
@@ -251,12 +247,12 @@ export default function About() {
                         </div>
                         <div className='SkillHard'>
                             <div className='Shape'>
-                                <DiJavascript1 className='IconHard' />
+                                <SiTypescript className='IconHard' />
                                 {secondPolygon}
                             </div>
                             <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
-                                    JavaScript
+                                    TypeScript
                                 </div>
                             </div>
                         </div>
@@ -264,23 +260,23 @@ export default function About() {
                     <div style={{ display: 'flex' }}>
                         <div className='SkillHard'>
                             <div className='Shape'>
-                                <SiSpring className='IconHard' />
+                                <SiDotnet className='IconHard' />
                                 {secondPolygon}
                             </div>
                             <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
-                                    Spring Boot
+                                    C# / .NET
                                 </div>
                             </div>
                         </div>
                         <div className='SkillHard'>
                             <div className='Shape'>
-                                <DiJava style={{ margin: '14px auto' }} className='IconHard' />
+                                <VscAzure className='IconHard' />
                                 {secondPolygon}
                             </div>
                             <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
-                                    Java
+                                    Azure
                                 </div>
                             </div>
                         </div>
@@ -299,12 +295,12 @@ export default function About() {
                         </div>
                         <div className='SkillHard'>
                             <div className='Shape'>
-                                <SiPython className='IconHard' />
+                                <SiClaude className='IconHard' />
                                 {secondPolygon}
                             </div>
                             <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
-                                    Python
+                                    AI-native
                                 </div>
                             </div>
                         </div>
