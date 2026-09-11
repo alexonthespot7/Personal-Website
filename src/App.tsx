@@ -13,11 +13,11 @@ import Footer from './Components/Footer';
 export default function App() {
   const matchesS = useMediaQuery("(min-width: 600px)");
 
-  const ref = useRef(null);
-  const refHome = useRef(null);
-  const refAbout = useRef(null);
-  const refPort = useRef(null);
-  const refCont = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const refHome = useRef<HTMLElement>(null);
+  const refAbout = useRef<HTMLElement>(null);
+  const refPort = useRef<HTMLElement>(null);
+  const refCont = useRef<HTMLElement>(null);
   const inView = useInView(ref);
   const inViewHome = useInView(refHome, { amount: 0 });
   const inViewAbout = useInView(refAbout, { amount: 0 });

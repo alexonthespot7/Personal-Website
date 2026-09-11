@@ -46,13 +46,14 @@ import raceMain from '../pictures/racechallenge/raceMain.png';
 
 import '../styles/Portfolio.css';
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
+import { AnimatePresence, motion, Transition } from 'framer-motion';
+import { CSSProperties, useState } from 'react';
 import { Card } from '@mui/material';
 import useMediaQuery from '../Hooks/useMediaQuery';
 import ProjectDialog from './ProjectDialog';
+import { Project } from '../types';
 
-const projects = [
+const projects: Project[] = [
     {
         name: 'Book Store',
         info: 'Full-stack project made with React.js, Java Spring, PostgreSQL, Google Firebase.',
@@ -171,7 +172,7 @@ function Portfolio() {
     const [category, setCategory] = useState('All');
     const [open, setOpen] = useState(false);
     const [categoriesViewed, setCategoriesViewed] = useState(false);
-    const [projectGlobal, setProjectGlobal] = useState(null);
+    const [projectGlobal, setProjectGlobal] = useState<Project | null>(null);
 
     const matches1200px = useMediaQuery("(min-width: 1200px)");
     const matches550px = useMediaQuery("(min-width: 550px)");
@@ -187,7 +188,7 @@ function Portfolio() {
         }
     }
 
-    const mainStyle = {
+    const mainStyle: CSSProperties = {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -278,7 +279,7 @@ function Portfolio() {
         }
     }
 
-    const openDialog = (project) => {
+    const openDialog = (project: Project) => {
         setProjectGlobal(project);
         setOpen(true);
     }
@@ -401,7 +402,7 @@ function Portfolio() {
         </AnimatePresence >
     );
 
-    const changeCat = (cat) => {
+    const changeCat = (cat: string) => {
         setCategoriesViewed(true);
         setCategory(cat);
     }
@@ -413,8 +414,8 @@ function Portfolio() {
                 whileInView="onscreen"
                 viewport={{ once: true, amount: 0.7 }}
             >
-                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, bounce: 0.4 }} variants={variantsHeader} className='About'>PROJECTS</motion.div>
-                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, delay: 0.5, bounce: 0.4 }} variants={variantsHeader} className='Line'></motion.div>
+                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, bounce: 0.4 } as Transition} variants={variantsHeader} className='About'>PROJECTS</motion.div>
+                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, delay: 0.5, bounce: 0.4 } as Transition} variants={variantsHeader} className='Line'></motion.div>
             </motion.div>
             <motion.div
                 className='Content'

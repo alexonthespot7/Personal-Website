@@ -7,7 +7,13 @@ import useMediaQuery from '../Hooks/useMediaQuery';
 
 import React, { useState } from 'react';
 
-export default function MyNav({ active, position, inView }) {
+interface MyNavProps {
+    active: string;
+    position: 'fixed' | 'sticky';
+    inView: boolean;
+}
+
+export default function MyNav({ active, position, inView }: MyNavProps) {
     const [open, setOpen] = useState(false);
 
     const handleClick = () => {

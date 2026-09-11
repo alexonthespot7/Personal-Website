@@ -6,6 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material';
 
+declare module '@mui/material/styles' {
+  interface Palette {
+    thirdary: Palette['primary'];
+  }
+  interface PaletteOptions {
+    thirdary?: PaletteOptions['primary'];
+  }
+}
+
 const theme = createTheme({
   palette: {
     thirdary: {
@@ -15,7 +24,8 @@ const theme = createTheme({
   }
 });
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>

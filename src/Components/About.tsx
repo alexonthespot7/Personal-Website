@@ -13,7 +13,7 @@ import { SiPostgresql } from 'react-icons/si';
 import { SiPython } from 'react-icons/si';
 
 
-import { motion } from 'framer-motion';
+import { motion, Transition } from 'framer-motion';
 import useMediaQuery from '../Hooks/useMediaQuery';
 
 export default function About() {
@@ -114,8 +114,8 @@ export default function About() {
                 whileInView="onscreen"
                 viewport={{ once: true, amount: 0.7 }}
             >
-                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, bounce: 0.4 }} variants={variantsHeader} className='About'>ABOUT</motion.div>
-                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, delay: 0.5, bounce: 0.4 }} variants={variantsHeader} className='Line'></motion.div>
+                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, bounce: 0.4 } as Transition} variants={variantsHeader} className='About'>ABOUT</motion.div>
+                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, delay: 0.5, bounce: 0.4 } as Transition} variants={variantsHeader} className='Line'></motion.div>
             </motion.div>
             <motion.div
                 className='SoftSkills'

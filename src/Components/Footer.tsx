@@ -9,7 +9,7 @@ import { RiInstagramLine } from 'react-icons/ri';
 import useMediaQuery from '../Hooks/useMediaQuery';
 
 export default function Footer() {
-    const openLink = (link) => {
+    const openLink = (link: string) => {
         window.open(link);
     }
 

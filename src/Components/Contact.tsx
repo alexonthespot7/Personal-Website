@@ -1,28 +1,35 @@
 import '../styles/Contact.css'
 
-import { motion } from 'framer-motion';
-import { forwardRef, useEffect, useState } from 'react';
+import { motion, Transition } from 'framer-motion';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { Input, Snackbar } from '@mui/material';
-import MuiAlert from '@mui/material/Alert';
+import MuiAlert, { AlertColor, AlertProps } from '@mui/material/Alert';
 import { send } from '@emailjs/browser';
 
-const Alert = forwardRef(function Alert(props, ref) {
+const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const initialSms = {
+interface Sms {
+    name: string;
+    message: string;
+    email: string;
+    [key: string]: string;
+}
+
+const initialSms: Sms = {
     name: '',
     message: '',
     email: ''
 }
 
 function Contact() {
-    const [sms, setSms] = useState(initialSms);
+    const [sms, setSms] = useState<Sms>(initialSms);
     const [action, setAction] = useState(false);
-    const [type, setType] = useState('');
+    const [type, setType] = useState<AlertColor | ''>('');
     const [msg, setMsg] = useState('');
 
-    const publicKey = process.env.REACT_APP_API_URL;
+    const publicKey = import.meta.env.VITE_API_URL;
 
     const variantsHeader = {
         offscreen: {
@@ -46,14 +53,14 @@ function Contact() {
         }
     }
 
-    const inputChanged = (event) => {
+    const inputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSms({ ...sms, [event.target.name]: event.target.value });
     }
 
     const sendMail = () => {
         send('service_5a0z8r3', 'contact_form', sms, publicKey)
             .then(response => {
-                if (!response.status === 200) {
+                if (response.status !== 200) {
                     setAction(true);
                     setType('error');
                     setMsg('Your message cannot be sent at the moment');
@@ -71,7 +78,7 @@ function Contact() {
             });
     }
 
-    const isValidEmail = (email) => {
+    const isValidEmail = (email: string) => {
         const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return pattern.test(email);
     }
@@ -105,19 +112,19 @@ function Contact() {
                 viewport={{ once: true, amount: 0.7 }}
             >
                 <motion.div
-                    transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, bounce: 0.4 }}
+                    transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, bounce: 0.4 } as Transition}
                     variants={variantsHeader}
                     className='About'
                 >
                     CONTACT
                 </motion.div>
                 <motion.div
-                    transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, delay: 0.5, bounce: 0.4 }}
+                    transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, delay: 0.5, bounce: 0.4 } as Transition}
                     variants={variantsHeader} className='Line ContactLine'
                 />
                 <motion.div
                     variants={variantsSubHeader}
-                    transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, delay: 1, bounce: 0.4 }}
+                    transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, delay: 1, bounce: 0.4 } as Transition}
                     className='SubHeader'>
                     Have a question or want to work together?
                 </motion.div>
@@ -139,7 +146,7 @@ function Contact() {
                 </div>
             </motion.div>
             <Snackbar open={action} autoHideDuration={3000} onClose={() => setAction(false)}>
-                <Alert onClose={() => setAction(false)} severity={type} sx={{ width: '100%' }}>
+                <Alert onClose={() => setAction(false)} severity={type as AlertColor} sx={{ width: '100%' }}>
                     {msg}
                 </Alert>
             </Snackbar>

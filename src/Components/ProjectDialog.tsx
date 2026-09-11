@@ -2,15 +2,18 @@ import '../styles/ProjectDialog.css';
 
 import { Button, Dialog, DialogContent, Divider, Fade, IconButton, Menu, MenuItem, useMediaQuery } from "@mui/material";
 import Carousel from "nuka-carousel/lib/carousel";
-import { forwardRef, useState } from "react";
+import { ControlProps } from "nuka-carousel/lib/types";
+import React, { forwardRef, useState } from "react";
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import LaunchIcon from '@mui/icons-material/Launch';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { SiGoogleplay } from 'react-icons/si';
+import { Project } from '../types';
+import { FadeProps } from '@mui/material/Fade';
 
-const Transition = forwardRef(function Transition(props, ref) {
+const Transition = forwardRef<HTMLDivElement, FadeProps>(function Transition(props, ref) {
     return <Fade
         timeout={{
             appear: 20000,
@@ -22,9 +25,14 @@ const Transition = forwardRef(function Transition(props, ref) {
     />;
 });
 
+interface ProjectDialogProps {
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    project: Project | null;
+}
 
-function ProjectDialog({ open, setOpen, project }) {
-    const [anchorEl, setAnchorEl] = useState(null);
+function ProjectDialog({ open, setOpen, project }: ProjectDialogProps) {
+    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const openMenu = Boolean(anchorEl);
 
     const matches680px = useMediaQuery('(min-width: 680px)');
@@ -35,6 +43,8 @@ function ProjectDialog({ open, setOpen, project }) {
     const matches380px = useMediaQuery('(min-width: 380px)');
     const matches350px = useMediaQuery('(min-width: 350px)');
     const matches330px = useMediaQuery('(min-width: 330px)');
+
+    if (!project) return null;
 
     const definePictureWidth = () => {
         if (matches680px) {
@@ -86,7 +96,7 @@ function ProjectDialog({ open, setOpen, project }) {
         currentSlide,
         slideCount,
         slidesToShow,
-    }) => {
+    }: ControlProps) => {
         if (!(currentSlide + slidesToShow === slideCount)) {
             return (
                 <IconButton
@@ -102,13 +112,12 @@ function ProjectDialog({ open, setOpen, project }) {
 
     const renderCenterLeftControls = ({
         previousSlide, currentSlide
-    }) => {
+    }: ControlProps) => {
         if (currentSlide !== 0) {
             return (
                 <IconButton
                     style={{ right: 0, color: 'white', backgroundColor: 'black' }}
                     onClick={previousSlide}
-                    color="white"
                 >
                     <ArrowBackIosNewIcon />
                 </IconButton>
@@ -117,11 +126,11 @@ function ProjectDialog({ open, setOpen, project }) {
         }
     }
 
-    const goToLink = (link) => {
+    const goToLink = (link: string) => {
         window.open(link);
     }
 
-    const handleClickMenu = (event) => {
+    const handleClickMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     }
 
@@ -161,11 +170,11 @@ function ProjectDialog({ open, setOpen, project }) {
             : (project.category === 'Front-end') ?
                 <div>
                     {matches330px && <Button onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>github</Button>}
-                    {!matches330px && <IconButton onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
+                    {!matches330px && <IconButton onClick={() => goToLink(project.github.frontend)} size={sizeButtons} sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
                 </div>
                 : <div>
                     {matches330px && <Button onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>github</Button>}
-                    {!matches330px && <IconButton onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
+                    {!matches330px && <IconButton onClick={() => goToLink(project.github.backend)} size={sizeButtons} sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
                 </div>
         )
         : <></>;
