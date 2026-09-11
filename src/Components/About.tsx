@@ -228,7 +228,7 @@ export default function About() {
                         Who am I?
                     </div>
                     <div style={{ textAlign: 'center' }} className='Description'>
-                        I am a third year Business IT student in Haaga-Helia with major in Software Development and <span style={{ fontWeight: 900, color: '#e31b6d' }}>GPA 5.0/5.0</span>. During the continuity of my studies I have successfully completed several front-end, back-end and full-stack projects.<span style={{ color: '#e31b6d', fontWeight: 900 }}> Currently </span> I am looking for an entry level software developer position.
+                        <span style={{ color: '#e31b6d', fontWeight: 900 }}>Currently</span> I'm a professional Software Developer at Sievo with <span style={{ fontWeight: 900, color: '#e31b6d' }}>2.5 years</span> of experience, embracing AI-native development. I hold a Bachelor's degree from Haaga-Helia with a 4.88 GPA and honors for academic excellence.
                     </div>
                 </motion.div>
                 <motion.div
