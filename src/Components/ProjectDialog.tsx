@@ -1,8 +1,7 @@
 import '../styles/ProjectDialog.css';
 
 import { Button, Dialog, DialogContent, Divider, Fade, IconButton, Menu, MenuItem, useMediaQuery } from "@mui/material";
-import Carousel from "nuka-carousel/lib/carousel";
-import { ControlProps } from "nuka-carousel/lib/types";
+import { Carousel, useCarousel } from "nuka-carousel";
 import React, { forwardRef, useState } from "react";
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -29,6 +28,33 @@ interface ProjectDialogProps {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     project: Project | null;
+}
+
+// Rendered as the Carousel's `arrows` node, so it sits inside the
+// CarouselProvider tree and can read/drive paging via useCarousel().
+function CarouselArrows() {
+    const { currentPage, totalPages, goBack, goForward } = useCarousel();
+
+    return (
+        <>
+            {currentPage !== 0 && (
+                <IconButton
+                    style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: 'white', backgroundColor: 'black' }}
+                    onClick={goBack}
+                >
+                    <ArrowBackIosNewIcon />
+                </IconButton>
+            )}
+            {currentPage !== totalPages - 1 && (
+                <IconButton
+                    style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', color: 'white', backgroundColor: 'black' }}
+                    onClick={goForward}
+                >
+                    <ArrowForwardIosIcon />
+                </IconButton>
+            )}
+        </>
+    );
 }
 
 function ProjectDialog({ open, setOpen, project }: ProjectDialogProps) {
@@ -91,41 +117,6 @@ function ProjectDialog({ open, setOpen, project }: ProjectDialogProps) {
         />
     ) : (<></>);
 
-    const renderCenterRightControls = ({
-        nextSlide,
-        currentSlide,
-        slideCount,
-        slidesToShow,
-    }: ControlProps) => {
-        if (!(currentSlide + slidesToShow === slideCount)) {
-            return (
-                <IconButton
-                    style={{ right: 0, color: 'white', backgroundColor: 'black' }}
-                    onClick={nextSlide}
-                >
-                    <ArrowForwardIosIcon />
-                </IconButton>
-
-            );
-        }
-    }
-
-    const renderCenterLeftControls = ({
-        previousSlide, currentSlide
-    }: ControlProps) => {
-        if (currentSlide !== 0) {
-            return (
-                <IconButton
-                    style={{ right: 0, color: 'white', backgroundColor: 'black' }}
-                    onClick={previousSlide}
-                >
-                    <ArrowBackIosNewIcon />
-                </IconButton>
-
-            );
-        }
-    }
-
     const goToLink = (link: string) => {
         window.open(link);
     }
@@ -154,8 +145,10 @@ function ProjectDialog({ open, setOpen, project }: ProjectDialogProps) {
                         anchorEl={anchorEl}
                         open={openMenu}
                         onClose={handleCloseMenu}
-                        MenuListProps={{
-                            'aria-labelledby': 'basic-button',
+                        slotProps={{
+                            list: {
+                                'aria-labelledby': 'basic-button',
+                            },
                         }}
                     >
                         <MenuItem>
@@ -183,22 +176,18 @@ function ProjectDialog({ open, setOpen, project }: ProjectDialogProps) {
         <Dialog
             open={open}
             onClose={handleClose}
-            TransitionComponent={Transition}
+            slots={{ transition: Transition }}
             transitionDuration={500}
         >
             {open && <DialogContent>
                 <div style={carouselAlign}>
                     <div style={{ width: matches680px ? 'auto' : `${pictureWidth}px` }}>
                         <Carousel
-                            dragging={false}
-                            speed={1250}
-                            renderCenterRightControls={renderCenterRightControls}
-                            renderCenterLeftControls={renderCenterLeftControls}
-                            defaultControlsConfig={{
-                                pagingDotsStyle: {
-                                    display: 'none'
-                                }
-                            }}
+                            swiping={false}
+                            wrapMode="nowrap"
+                            showArrows="always"
+                            arrows={<CarouselArrows />}
+                            showDots={false}
                         >
                             {photos}
                         </Carousel>
