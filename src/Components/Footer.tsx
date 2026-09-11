@@ -29,7 +29,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className='FooterInfo'>
-                ALEKSEI SHEVELENKOV <span className='Year'>©2023</span>
+                ALEKSEI SHEVELENKOV <span className='Year'>©2026</span>
             </div>
         </div >
     );
