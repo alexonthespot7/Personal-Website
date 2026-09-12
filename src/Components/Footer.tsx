@@ -4,12 +4,10 @@ import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp
 import { HashLink } from 'react-router-hash-link';
 import { RiLinkedinFill } from 'react-icons/ri';
 import { RiGithubFill } from 'react-icons/ri';
-import { SiTelegram } from 'react-icons/si';
-import { RiInstagramLine } from 'react-icons/ri';
 import useMediaQuery from '../Hooks/useMediaQuery';
 
 export default function Footer() {
-    const openLink = (link) => {
+    const openLink = (link: string) => {
         window.open(link);
     }
 
@@ -29,15 +27,9 @@ export default function Footer() {
                 <div onClick={() => openLink('https://github.com/alexonthespot7')} className='SocialLink'>
                     <RiGithubFill size={24} />
                 </div>
-                <div onClick={() => openLink('https://t.me/axosinc')} className='SocialLink'>
-                    <SiTelegram size={24} />
-                </div>
-                <div onClick={() => openLink('https://www.instagram.com/mark_eto_leha_dobav')} className='SocialLink'>
-                    <RiInstagramLine size={24} />
-                </div>
             </div>
             <div className='FooterInfo'>
-                ALEKSEI SHEVELENKOV <span className='Year'>©2023</span>
+                ALEKSEI SHEVELENKOV <span className='Year'>©2026</span>
             </div>
         </div >
     );

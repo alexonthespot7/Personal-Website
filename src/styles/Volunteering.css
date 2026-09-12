@@ -1,0 +1,70 @@
+/* Shares the timeline scaffolding (.Timeline, .TimelineItem, .TimelineDot,
+   .TimelineContent) with WorkExperience.css, so only the entry's own text
+   styles and the accent overrides below live here. */
+.VolunteeringContainer {
+    line-height: 18pt;
+    padding: 100px 0 130px 0;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #444649;
+    font-family: "Raleway";
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Third accent pairing, after Experience (cyan rail / pink dot) and Education
+   (pink rail / cyan dot): a navy rail keeps the dots readable against the
+   warmer background of this section. */
+.VolunteeringContainer .Timeline::before {
+    background: #1b242f;
+}
+
+.VolunteeringContainer .TimelineDot {
+    background: #e31b6d;
+    box-shadow: 0 0 0 2px #1b242f;
+}
+
+.VolunteerRole {
+    font-size: 15pt;
+    font-weight: 900;
+    color: #1b242f;
+}
+
+.VolunteerMeta {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #e31b6d;
+    margin-top: 4px;
+}
+
+.VolunteerCause {
+    font-size: 10pt;
+    color: #808080;
+    margin-top: 2px;
+}
+
+.VolunteerDescription {
+    font-size: 11pt;
+    line-height: 16pt;
+    color: #444649;
+    margin-top: 12px;
+}
+
+@media (max-width:1000px) {
+    .VolunteeringContainer {
+        padding: 50px 0px 65px 0px;
+    }
+}
+
+@media (max-width:600px) {
+    .VolunteerRole {
+        font-size: 13pt;
+    }
+
+    .VolunteerDescription {
+        font-size: 10pt;
+        line-height: 15pt;
+    }
+}

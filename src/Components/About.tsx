@@ -3,17 +3,13 @@ import me from '../pictures/Me.jpg';
 
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import SchoolIcon from '@mui/icons-material/School';
-import { VscOrganization } from 'react-icons/vsc';
+import { VscOrganization, VscAzure } from 'react-icons/vsc';
 import { FiCheckCircle } from 'react-icons/fi';
 import { IoLogoReact } from 'react-icons/io5';
-import { DiJavascript1 } from 'react-icons/di';
-import { SiFlutter, SiSpring } from 'react-icons/si';
-import { DiJava } from 'react-icons/di';
-import { SiPostgresql } from 'react-icons/si';
-import { SiPython } from 'react-icons/si';
+import { SiFlutter, SiTypescript, SiDotnet, SiPostgresql, SiClaude } from 'react-icons/si';
 
 
-import { motion } from 'framer-motion';
+import { motion, Transition } from 'framer-motion';
 import useMediaQuery from '../Hooks/useMediaQuery';
 
 export default function About() {
@@ -114,8 +110,8 @@ export default function About() {
                 whileInView="onscreen"
                 viewport={{ once: true, amount: 0.7 }}
             >
-                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, bounce: 0.4 }} variants={variantsHeader} className='About'>ABOUT</motion.div>
-                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, delay: 0.5, bounce: 0.4 }} variants={variantsHeader} className='Line'></motion.div>
+                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, bounce: 0.4 } as Transition} variants={variantsHeader} className='About'>ABOUT</motion.div>
+                <motion.div transition={{ ease: 'easeIn', type: 'spring', duration: 0.8, delay: 0.5, bounce: 0.4 } as Transition} variants={variantsHeader} className='Line'></motion.div>
             </motion.div>
             <motion.div
                 className='SoftSkills'
@@ -228,7 +224,7 @@ export default function About() {
                         Who am I?
                     </div>
                     <div style={{ textAlign: 'center' }} className='Description'>
-                        I am a third year Business IT student in Haaga-Helia with major in Software Development and <span style={{ fontWeight: 900, color: '#e31b6d' }}>GPA 5.0/5.0</span>. During the continuity of my studies I have successfully completed several front-end, back-end and full-stack projects.<span style={{ color: '#e31b6d', fontWeight: 900 }}> Currently </span> I am looking for an entry level software developer position.
+                        <span style={{ color: '#e31b6d', fontWeight: 900 }}>Currently</span> I'm a professional Software Developer at Sievo with <span style={{ fontWeight: 900, color: '#e31b6d' }}>2.5 years</span> of experience, embracing AI-native development. I hold a Bachelor's degree from Haaga-Helia with a 4.88 GPA and honors for academic excellence.
                     </div>
                 </motion.div>
                 <motion.div
@@ -251,12 +247,12 @@ export default function About() {
                         </div>
                         <div className='SkillHard'>
                             <div className='Shape'>
-                                <DiJavascript1 className='IconHard' />
+                                <SiTypescript className='IconHard' />
                                 {secondPolygon}
                             </div>
                             <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
-                                    JavaScript
+                                    TypeScript
                                 </div>
                             </div>
                         </div>
@@ -264,23 +260,23 @@ export default function About() {
                     <div style={{ display: 'flex' }}>
                         <div className='SkillHard'>
                             <div className='Shape'>
-                                <SiSpring className='IconHard' />
+                                <SiDotnet className='IconHard' />
                                 {secondPolygon}
                             </div>
                             <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
-                                    Spring Boot
+                                    C# / .NET
                                 </div>
                             </div>
                         </div>
                         <div className='SkillHard'>
                             <div className='Shape'>
-                                <DiJava style={{ margin: '14px auto' }} className='IconHard' />
+                                <VscAzure className='IconHard' />
                                 {secondPolygon}
                             </div>
                             <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
-                                    Java
+                                    Azure
                                 </div>
                             </div>
                         </div>
@@ -299,12 +295,12 @@ export default function About() {
                         </div>
                         <div className='SkillHard'>
                             <div className='Shape'>
-                                <SiPython className='IconHard' />
+                                <SiClaude className='IconHard' />
                                 {secondPolygon}
                             </div>
                             <div className={matches350px ? 'TextDiv' : 'SmallTextDiv'}>
                                 <div className='LabelSkill'>
-                                    Python
+                                    AI-native
                                 </div>
                             </div>
                         </div>

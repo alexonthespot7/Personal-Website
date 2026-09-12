@@ -1,16 +1,18 @@
 import '../styles/ProjectDialog.css';
 
 import { Button, Dialog, DialogContent, Divider, Fade, IconButton, Menu, MenuItem, useMediaQuery } from "@mui/material";
-import Carousel from "nuka-carousel/lib/carousel";
-import { forwardRef, useState } from "react";
+import { Carousel, useCarousel } from "nuka-carousel";
+import React, { forwardRef, useState } from "react";
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import LaunchIcon from '@mui/icons-material/Launch';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { SiGoogleplay } from 'react-icons/si';
+import { Project } from '../types';
+import { FadeProps } from '@mui/material/Fade';
 
-const Transition = forwardRef(function Transition(props, ref) {
+const Transition = forwardRef<HTMLDivElement, FadeProps>(function Transition(props, ref) {
     return <Fade
         timeout={{
             appear: 20000,
@@ -22,9 +24,41 @@ const Transition = forwardRef(function Transition(props, ref) {
     />;
 });
 
+interface ProjectDialogProps {
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    project: Project | null;
+}
 
-function ProjectDialog({ open, setOpen, project }) {
-    const [anchorEl, setAnchorEl] = useState(null);
+// Rendered as the Carousel's `arrows` node, so it sits inside the
+// CarouselProvider tree and can read/drive paging via useCarousel().
+function CarouselArrows() {
+    const { currentPage, totalPages, goBack, goForward } = useCarousel();
+
+    return (
+        <>
+            {currentPage !== 0 && (
+                <IconButton
+                    style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: 'white', backgroundColor: 'black' }}
+                    onClick={goBack}
+                >
+                    <ArrowBackIosNewIcon />
+                </IconButton>
+            )}
+            {currentPage !== totalPages - 1 && (
+                <IconButton
+                    style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', color: 'white', backgroundColor: 'black' }}
+                    onClick={goForward}
+                >
+                    <ArrowForwardIosIcon />
+                </IconButton>
+            )}
+        </>
+    );
+}
+
+function ProjectDialog({ open, setOpen, project }: ProjectDialogProps) {
+    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const openMenu = Boolean(anchorEl);
 
     const matches680px = useMediaQuery('(min-width: 680px)');
@@ -35,6 +69,8 @@ function ProjectDialog({ open, setOpen, project }) {
     const matches380px = useMediaQuery('(min-width: 380px)');
     const matches350px = useMediaQuery('(min-width: 350px)');
     const matches330px = useMediaQuery('(min-width: 330px)');
+
+    if (!project) return null;
 
     const definePictureWidth = () => {
         if (matches680px) {
@@ -81,47 +117,11 @@ function ProjectDialog({ open, setOpen, project }) {
         />
     ) : (<></>);
 
-    const renderCenterRightControls = ({
-        nextSlide,
-        currentSlide,
-        slideCount,
-        slidesToShow,
-    }) => {
-        if (!(currentSlide + slidesToShow === slideCount)) {
-            return (
-                <IconButton
-                    style={{ right: 0, color: 'white', backgroundColor: 'black' }}
-                    onClick={nextSlide}
-                >
-                    <ArrowForwardIosIcon />
-                </IconButton>
-
-            );
-        }
-    }
-
-    const renderCenterLeftControls = ({
-        previousSlide, currentSlide
-    }) => {
-        if (currentSlide !== 0) {
-            return (
-                <IconButton
-                    style={{ right: 0, color: 'white', backgroundColor: 'black' }}
-                    onClick={previousSlide}
-                    color="white"
-                >
-                    <ArrowBackIosNewIcon />
-                </IconButton>
-
-            );
-        }
-    }
-
-    const goToLink = (link) => {
+    const goToLink = (link: string) => {
         window.open(link);
     }
 
-    const handleClickMenu = (event) => {
+    const handleClickMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     }
 
@@ -145,8 +145,10 @@ function ProjectDialog({ open, setOpen, project }) {
                         anchorEl={anchorEl}
                         open={openMenu}
                         onClose={handleCloseMenu}
-                        MenuListProps={{
-                            'aria-labelledby': 'basic-button',
+                        slotProps={{
+                            list: {
+                                'aria-labelledby': 'basic-button',
+                            },
                         }}
                     >
                         <MenuItem>
@@ -161,11 +163,11 @@ function ProjectDialog({ open, setOpen, project }) {
             : (project.category === 'Front-end') ?
                 <div>
                     {matches330px && <Button onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>github</Button>}
-                    {!matches330px && <IconButton onClick={() => goToLink(project.github.frontend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
+                    {!matches330px && <IconButton onClick={() => goToLink(project.github.frontend)} size={sizeButtons} sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
                 </div>
                 : <div>
                     {matches330px && <Button onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }} startIcon={<GitHubIcon sx={{ color: '#1b242f' }} />}>github</Button>}
-                    {!matches330px && <IconButton onClick={() => goToLink(project.github.backend)} size={sizeButtons} variant="outlined" sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
+                    {!matches330px && <IconButton onClick={() => goToLink(project.github.backend)} size={sizeButtons} sx={{ "&:hover": { backgroundColor: '#fff', filter: 'brightness(70%)' }, borderColor: '#e31b6d', color: '#1b242f', transition: '0.45s' }}><GitHubIcon sx={{ color: '#1b242f' }} /></IconButton>}
                 </div>
         )
         : <></>;
@@ -174,22 +176,18 @@ function ProjectDialog({ open, setOpen, project }) {
         <Dialog
             open={open}
             onClose={handleClose}
-            TransitionComponent={Transition}
+            slots={{ transition: Transition }}
             transitionDuration={500}
         >
             {open && <DialogContent>
                 <div style={carouselAlign}>
                     <div style={{ width: matches680px ? 'auto' : `${pictureWidth}px` }}>
                         <Carousel
-                            dragging={false}
-                            speed={1250}
-                            renderCenterRightControls={renderCenterRightControls}
-                            renderCenterLeftControls={renderCenterLeftControls}
-                            defaultControlsConfig={{
-                                pagingDotsStyle: {
-                                    display: 'none'
-                                }
-                            }}
+                            swiping={false}
+                            wrapMode="nowrap"
+                            showArrows="always"
+                            arrows={<CarouselArrows />}
+                            showDots={false}
                         >
                             {photos}
                         </Carousel>
@@ -207,7 +205,9 @@ function ProjectDialog({ open, setOpen, project }) {
                         {project.description}
                     </div>
                     <div className='DialogButtons'>
-                        <Button startIcon={project.name === 'HEG Race Challenge' ? <SiGoogleplay /> : <LaunchIcon sx={{ color: '#fff' }} />} onClick={() => goToLink(project.demo)} size={sizeButtons} variant="contained" sx={{ "&:hover": { backgroundColor: '#e31b6d', filter: 'brightness(70%)' }, backgroundColor: '#e31b6d', color: '#fff', transition: '0.45s' }}>{project.name !== 'HEG Race Challenge' ? 'demo' : 'google play'}</Button>
+                        {!['Book Store', 'Tournament App'].includes(project.name) &&
+                            <Button startIcon={project.name === 'HEG Race Challenge' ? <SiGoogleplay /> : <LaunchIcon sx={{ color: '#fff' }} />} onClick={() => goToLink(project.demo)} size={sizeButtons} variant="contained" sx={{ "&:hover": { backgroundColor: '#e31b6d', filter: 'brightness(70%)' }, backgroundColor: '#e31b6d', color: '#fff', transition: '0.45s' }}>{project.name !== 'HEG Race Challenge' ? 'demo' : 'google play'}</Button>
+                        }
                         {gitButtons}
                     </div>
                 </div>

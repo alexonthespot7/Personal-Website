@@ -1,0 +1,86 @@
+/* Shares the timeline scaffolding (.Timeline, .TimelineItem, .TimelineDot,
+   .TimelineContent, .JobSkills, .SkillTag) with WorkExperience.css, so only
+   the entry's own text styles and the accent overrides below live here. */
+.EducationContainer {
+    line-height: 18pt;
+    padding: 100px 0 130px 0;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #444649;
+    font-family: "Raleway";
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Experience runs a cyan rail with pink dots; Education inverts that pairing so
+   the two timelines read as related but distinct chapters. */
+.EducationContainer .Timeline::before {
+    background: #e31b6d;
+}
+
+.EducationContainer .TimelineDot {
+    background: #04c2c9;
+    box-shadow: 0 0 0 2px #e31b6d;
+}
+
+.SchoolName {
+    font-size: 15pt;
+    font-weight: 900;
+    color: #1b242f;
+}
+
+.DegreeMeta {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #e31b6d;
+    margin-top: 4px;
+}
+
+.StudyPeriod {
+    font-size: 10pt;
+    color: #808080;
+    margin-top: 2px;
+}
+
+.StudyHonors {
+    font-size: 10.5pt;
+    line-height: 15pt;
+    font-weight: 600;
+    color: #1b242f;
+    background: #f5f5f5;
+    border-left: 3px solid #04c2c9;
+    border-radius: 0 4px 4px 0;
+    padding: 10px 14px;
+    margin-top: 14px;
+}
+
+.StudyDescription {
+    font-size: 11pt;
+    line-height: 16pt;
+    color: #444649;
+    margin-top: 12px;
+}
+
+@media (max-width:1000px) {
+    .EducationContainer {
+        padding: 50px 0px 65px 0px;
+    }
+}
+
+@media (max-width:600px) {
+    .SchoolName {
+        font-size: 13pt;
+    }
+
+    .StudyHonors {
+        font-size: 10pt;
+        padding: 8px 12px;
+    }
+
+    .StudyDescription {
+        font-size: 10pt;
+        line-height: 15pt;
+    }
+}
