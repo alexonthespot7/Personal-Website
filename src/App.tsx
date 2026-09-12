@@ -38,30 +38,31 @@ export default function App() {
   const active = defineActive();
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-      <MyNav active={active} position={'fixed'} inView={inView} />
-      <header ref={refHome} id='Home'>
-        <Header />
-      </header>
-      <div ref={ref} style={{ width: '100%' }}>
-        <MyNav active={active} position={'sticky'} inView={(inView || inViewHome)} />
+    <div style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', minHeight: '100vh' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 auto' }}>
+        <MyNav active={active} position={'fixed'} inView={inView} />
+        <header ref={refHome} id='Home'>
+          <Header />
+        </header>
+        <div ref={ref} style={{ width: '100%' }}>
+          <MyNav active={active} position={'sticky'} inView={(inView || inViewHome)} />
+        </div>
+        <section style={{ backgroundColor: '#ffffff' }} ref={refAbout} id='About'>
+          <About />
+        </section>
+        <section style={{ backgroundColor: '#f5f5f5' }} ref={refExp} id='Experience'>
+          <WorkExperience />
+        </section>
+        <section style={{ backgroundColor: '#ffffff' }} ref={refPort} id='Projects'>
+          <Portfolio />
+        </section>
+        <section style={{ backgroundColor: '#ffffff' }} ref={refCont} id="Contact">
+          <Contact />
+        </section>
       </div>
-      <section style={{ backgroundColor: '#ffffff' }} ref={refAbout} id='About'>
-        <About />
-      </section>
-      <section style={{ backgroundColor: '#f5f5f5' }} ref={refExp} id='Experience'>
-        <WorkExperience />
-      </section>
-      <section style={{ backgroundColor: '#ffffff' }} ref={refPort} id='Projects'>
-        <Portfolio />
-      </section>
-      <section style={{ backgroundColor: '#252934' }} ref={refCont} id="Contact">
-        <Contact />
-      </section>
       <footer ref={refCont} style={{ backgroundColor: '#1b242f' }}>
         <Footer />
       </footer>
-
     </div>
   );
 

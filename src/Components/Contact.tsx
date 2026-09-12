@@ -29,7 +29,6 @@ function Contact() {
 
     return (
         <div className="ContactContainer">
-            <div className='triangle' />
             <motion.div style={{ paddingTop: '40px' }} className='Header'
                 initial='offscreen'
                 whileInView="onscreen"
