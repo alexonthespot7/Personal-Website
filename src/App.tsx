@@ -8,18 +8,20 @@ import useMediaQuery from './Hooks/useMediaQuery';
 import About from './Components/About';
 import WorkExperience from './Components/WorkExperience';
 import Education from './Components/Education';
+import Volunteering from './Components/Volunteering';
 import Portfolio from './Components/Portfolio';
 import Contact from './Components/Contact';
 import Footer from './Components/Footer';
 
 export default function App() {
-  const matchesS = useMediaQuery("(min-width: 600px)");
+  const matchesS = useMediaQuery("(min-width: 900px)");
 
   const ref = useRef<HTMLDivElement>(null);
   const refHome = useRef<HTMLElement>(null);
   const refAbout = useRef<HTMLElement>(null);
   const refExp = useRef<HTMLElement>(null);
   const refEdu = useRef<HTMLElement>(null);
+  const refVol = useRef<HTMLElement>(null);
   const refPort = useRef<HTMLElement>(null);
   const refCont = useRef<HTMLElement>(null);
   const inView = useInView(ref);
@@ -27,14 +29,15 @@ export default function App() {
   const inViewAbout = useInView(refAbout, { amount: 0 });
   const inViewExp = useInView(refExp, { amount: 0 });
   const inViewEdu = useInView(refEdu, { amount: 0 });
+  const inViewVol = useInView(refVol, { amount: 0 });
   const inViewPort = useInView(refPort, { amount: 0 });
   const inViewCont = useInView(refCont, { amount: 0 });
 
   const defineActive = () => {
     if (matchesS) {
-      return (inView || inViewHome) ? 'Home' : inViewAbout ? 'About' : inViewExp ? 'Experience' : inViewEdu ? 'Education' : inViewPort ? 'Portfolio' : inViewCont ? 'Contact' : '';
+      return (inView || inViewHome) ? 'Home' : inViewAbout ? 'About' : inViewExp ? 'Experience' : inViewEdu ? 'Education' : inViewVol ? 'Volunteering' : inViewPort ? 'Portfolio' : inViewCont ? 'Contact' : '';
     } else {
-      return inViewHome ? 'Home' : inViewAbout ? 'About' : inViewExp ? 'Experience' : inViewEdu ? 'Education' : inViewPort ? 'Portfolio' : inViewCont ? 'Contact' : '';
+      return inViewHome ? 'Home' : inViewAbout ? 'About' : inViewExp ? 'Experience' : inViewEdu ? 'Education' : inViewVol ? 'Volunteering' : inViewPort ? 'Portfolio' : inViewCont ? 'Contact' : '';
     }
   }
 
@@ -58,6 +61,9 @@ export default function App() {
         </section>
         <section style={{ backgroundColor: '#eaf6f7' }} ref={refEdu} id='Education'>
           <Education />
+        </section>
+        <section style={{ backgroundColor: '#fdf1f5' }} ref={refVol} id='Volunteering'>
+          <Volunteering />
         </section>
         <section style={{ backgroundColor: '#ffffff' }} ref={refPort} id='Projects'>
           <Portfolio />

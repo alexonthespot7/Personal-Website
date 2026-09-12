@@ -28,18 +28,19 @@ export default function MyNav({ active, position, inView }: MyNavProps) {
         setOpen(false);
     }
 
-    const matches600px = useMediaQuery("(min-width: 600px)");
+    const matches900px = useMediaQuery("(min-width: 900px)");
 
-    if (matches600px) {
+    if (matches900px) {
         if (position !== 'fixed') {
             return (
                 <div>
                     <AppBar sx={{ zIndex: 1, height: 50, backgroundColor: '#1b242f', borderBottom: '3px solid #04c2c9' }} position={position}>
-                        <Toolbar sx={{ display: 'flex', alignItems: 'center', gap: { sm: 2, md: 4, lg: 10 }, justifyContent: 'center' }} >
+                        <Toolbar sx={{ display: 'flex', alignItems: 'center', gap: { md: 4, lg: 10 }, justifyContent: 'center' }} >
                             <HashLink smooth to="#" className={active === 'Home' ? 'active' : 'link'}>HOME</HashLink>
                             <HashLink smooth to="#About" className={active === 'About' ? 'active' : 'link'}>ABOUT</HashLink>
                             <HashLink smooth to="#Experience" className={active === 'Experience' ? 'active' : 'link'}>EXPERIENCE</HashLink>
                             <HashLink smooth to="#Education" className={active === 'Education' ? 'active' : 'link'}>EDUCATION</HashLink>
+                            <HashLink smooth to="#Volunteering" className={active === 'Volunteering' ? 'active' : 'link'}>VOLUNTEERING</HashLink>
                             <HashLink smooth to="#Projects" className={active === 'Portfolio' ? 'active' : 'link'}>PORTFOLIO</HashLink>
                             <HashLink smooth to="#Contact" className={active === 'Contact' ? 'active' : 'link'}>CONTACT</HashLink>
                         </Toolbar>
@@ -51,11 +52,12 @@ export default function MyNav({ active, position, inView }: MyNavProps) {
                 <div>
                     <Slide appear={true} direction="down" in={!inView}>
                         <AppBar sx={{ zIndex: 1, height: 50, backgroundColor: '#1b242f', borderBottom: '3px solid #04c2c9' }} position={position}>
-                            <Toolbar sx={{ display: 'flex', alignItems: 'center', gap: { sm: 2, md: 4, lg: 10 }, justifyContent: 'center' }} >
+                            <Toolbar sx={{ display: 'flex', alignItems: 'center', gap: { md: 4, lg: 10 }, justifyContent: 'center' }} >
                                 <HashLink smooth to="#Home" className={active === 'Home' ? 'active' : 'link'}>HOME</HashLink>
                                 <HashLink smooth to="#About" className={active === 'About' ? 'active' : 'link'}>ABOUT</HashLink>
                                 <HashLink smooth to="#Experience" className={active === 'Experience' ? 'active' : 'link'}>EXPERIENCE</HashLink>
                                 <HashLink smooth to="#Education" className={active === 'Education' ? 'active' : 'link'}>EDUCATION</HashLink>
+                                <HashLink smooth to="#Volunteering" className={active === 'Volunteering' ? 'active' : 'link'}>VOLUNTEERING</HashLink>
                                 <HashLink smooth to="#Projects" className={active === 'Portfolio' ? 'active' : 'link'}>PORTFOLIO</HashLink>
                                 <HashLink smooth to="#Contact" className={active === 'Contact' ? 'active' : 'link'}>CONTACT</HashLink>
                             </Toolbar>
@@ -80,6 +82,7 @@ export default function MyNav({ active, position, inView }: MyNavProps) {
                         <HashLink onClick={handleClose} smooth to="#About" className={active === 'About' ? 'active Mini' : 'link Mini'}>ABOUT</HashLink>
                         <HashLink onClick={handleClose} smooth to="#Experience" className={active === 'Experience' ? 'active Mini' : 'link Mini'}>EXPERIENCE</HashLink>
                         <HashLink onClick={handleClose} smooth to="#Education" className={active === 'Education' ? 'active Mini' : 'link Mini'}>EDUCATION</HashLink>
+                        <HashLink onClick={handleClose} smooth to="#Volunteering" className={active === 'Volunteering' ? 'active Mini' : 'link Mini'}>VOLUNTEERING</HashLink>
                         <HashLink onClick={handleClose} smooth to="#Projects" className={active === 'Portfolio' ? 'active Mini' : 'link Mini'}>PORTFOLIO</HashLink>
                         <HashLink onClick={handleClose} smooth to="#Contact" className={active === 'Contact' ? 'active Mini' : 'link Mini'}>CONTACT</HashLink>
                     </div>
