@@ -24,21 +24,32 @@ export default function App() {
   const refVol = useRef<HTMLElement>(null);
   const refPort = useRef<HTMLElement>(null);
   const refCont = useRef<HTMLElement>(null);
+  const refFooter = useRef<HTMLElement>(null);
   const inView = useInView(ref);
   const inViewHome = useInView(refHome, { amount: 0 });
-  const inViewAbout = useInView(refAbout, { amount: 0 });
-  const inViewExp = useInView(refExp, { amount: 0 });
-  const inViewEdu = useInView(refEdu, { amount: 0 });
-  const inViewVol = useInView(refVol, { amount: 0 });
-  const inViewPort = useInView(refPort, { amount: 0 });
-  const inViewCont = useInView(refCont, { amount: 0 });
+
+  // A section is "active" when it crosses a thin horizontal band at the
+  // vertical centre of the viewport, so only one section can be active at a time.
+  const centerBand = { amount: 0, margin: '-50% 0px -49% 0px' } as const;
+  const activeHome = useInView(refHome, centerBand);
+  const activeAbout = useInView(refAbout, centerBand);
+  const activeExp = useInView(refExp, centerBand);
+  const activeEdu = useInView(refEdu, centerBand);
+  const activeVol = useInView(refVol, centerBand);
+  const activePort = useInView(refPort, centerBand);
+  const activeCont = useInView(refCont, centerBand);
+  const activeFooter = useInView(refFooter, centerBand);
 
   const defineActive = () => {
-    if (matchesS) {
-      return (inView || inViewHome) ? 'Home' : inViewAbout ? 'About' : inViewExp ? 'Experience' : inViewEdu ? 'Education' : inViewVol ? 'Volunteering' : inViewPort ? 'Portfolio' : inViewCont ? 'Contact' : '';
-    } else {
-      return inViewHome ? 'Home' : inViewAbout ? 'About' : inViewExp ? 'Experience' : inViewEdu ? 'Education' : inViewVol ? 'Volunteering' : inViewPort ? 'Portfolio' : inViewCont ? 'Contact' : '';
-    }
+    if (matchesS && inView) return 'Home';
+    if (activeHome) return 'Home';
+    if (activeAbout) return 'About';
+    if (activeExp) return 'Experience';
+    if (activeEdu) return 'Education';
+    if (activeVol) return 'Volunteering';
+    if (activePort) return 'Portfolio';
+    if (activeCont || activeFooter) return 'Contact';
+    return '';
   }
 
   const active = defineActive();
@@ -72,7 +83,7 @@ export default function App() {
           <Contact />
         </section>
       </div>
-      <footer ref={refCont} style={{ backgroundColor: '#1b242f' }}>
+      <footer ref={refFooter} style={{ backgroundColor: '#1b242f' }}>
         <Footer />
       </footer>
     </div>
