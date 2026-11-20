@@ -2,7 +2,11 @@ import '../styles/WorkExperience.css';
 
 import { motion, Transition } from 'framer-motion';
 
+import sievoLogo from '../pictures/logos/sievo_oy.jpg';
+import nbfLogo from '../pictures/logos/nordic_business_forum.jpg';
+
 interface Job {
+    logo?: string;
     role: string;
     company: string;
     period: string;
@@ -14,6 +18,7 @@ interface Job {
 
 const jobs: Job[] = [
     {
+        logo: sievoLogo,
         role: 'Software Engineer',
         company: 'Sievo',
         period: 'May 2024 – Present',
@@ -23,6 +28,7 @@ const jobs: Job[] = [
         skills: ['React.js', 'TypeScript', 'C# / .NET', 'Azure', 'Playwright']
     },
     {
+        logo: nbfLogo,
         role: 'Temporary Customer Service Representative',
         company: 'Nordic Business Forum',
         period: 'Sep 2023',
@@ -88,9 +94,14 @@ function WorkExperience() {
                     >
                         <div className='TimelineDot' />
                         <div className='TimelineContent'>
-                            <div className='JobRole'>{job.role}</div>
-                            <div className='JobMeta'>{job.company} · {job.period}{job.type ? ` · ${job.type}` : ''}</div>
-                            <div className='JobLocation'>{job.location}</div>
+                            <div className='EntryHeader'>
+                                {job.logo && <img className='EntryLogo' src={job.logo} alt={`${job.company} logo`} />}
+                                <div className='EntryHeaderText'>
+                                    <div className='JobRole'>{job.role}</div>
+                                    <div className='JobMeta'>{job.company} · {job.period}{job.type ? ` · ${job.type}` : ''}</div>
+                                    <div className='JobLocation'>{job.location}</div>
+                                </div>
+                            </div>
                             <div className='JobDescription'>{job.description}</div>
                             <div className='JobSkills'>
                                 {job.skills.map((skill, skillIndex) => (

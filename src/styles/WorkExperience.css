@@ -62,6 +62,27 @@
     text-align: left;
 }
 
+/* Shared by Experience, Education and Volunteering: logo beside the heading lines. */
+.EntryHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.EntryHeaderText {
+    flex: 1;
+    min-width: 0;
+}
+
+.EntryLogo {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 1px 4px rgba(27, 36, 47, 0.15);
+}
+
 .JobRole {
     font-size: 15pt;
     font-weight: 900;
@@ -127,6 +148,15 @@
 
     .TimelineContent {
         padding: 16px 18px;
+    }
+
+    .EntryHeader {
+        gap: 12px;
+    }
+
+    .EntryLogo {
+        width: 44px;
+        height: 44px;
     }
 
     .JobRole {

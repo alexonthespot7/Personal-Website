@@ -2,7 +2,12 @@ import '../styles/Volunteering.css';
 
 import { motion, Transition } from 'framer-motion';
 
+import slushLogo from '../pictures/logos/slush.jpg';
+import tuskaLogo from '../pictures/logos/tuska.jpg';
+import flowLogo from '../pictures/logos/flowfestival.jpg';
+
 interface VolunteerRole {
+    logo?: string;
     role: string;
     organization: string;
     period: string;
@@ -12,6 +17,7 @@ interface VolunteerRole {
 
 const roles: VolunteerRole[] = [
     {
+        logo: slushLogo,
         role: 'Analytics & Feedback Volunteer',
         organization: 'Slush',
         period: 'Nov 2026',
@@ -19,6 +25,7 @@ const roles: VolunteerRole[] = [
         description: "Volunteered at Slush 2026 on the Analytics & Feedback team, supporting Investors Day and Days 1 and 2 of Slush at the venue. I monitored key areas, gathered on-site observations and direct feedback from attendees and staff, and helped capture insights that will shape next year's event and make the experience smoother for everyone."
     },
     {
+        logo: tuskaLogo,
         role: 'Sustainability Volunteer',
         organization: 'Tuska Festival',
         period: 'Jun 2026',
@@ -26,6 +33,7 @@ const roles: VolunteerRole[] = [
         description: 'Volunteered at Tuska Festival 2026 as part of the Recycling Team, helping maintain cleanliness across the festival area and supporting waste management operations. Completed two days of volunteering and worked closely with other volunteers and festival staff.'
     },
     {
+        logo: flowLogo,
         role: 'Sustainability Volunteer',
         organization: 'Flow Festival Oy (Ltd)',
         period: 'Aug 2025',
@@ -80,9 +88,14 @@ function Volunteering() {
                     >
                         <div className='TimelineDot' />
                         <div className='TimelineContent'>
-                            <div className='VolunteerRole'>{entry.role}</div>
-                            <div className='VolunteerMeta'>{entry.organization} · {entry.period}</div>
-                            <div className='VolunteerCause'>{entry.cause}</div>
+                            <div className='EntryHeader'>
+                                {entry.logo && <img className='EntryLogo' src={entry.logo} alt={`${entry.organization} logo`} />}
+                                <div className='EntryHeaderText'>
+                                    <div className='VolunteerRole'>{entry.role}</div>
+                                    <div className='VolunteerMeta'>{entry.organization} · {entry.period}</div>
+                                    <div className='VolunteerCause'>{entry.cause}</div>
+                                </div>
+                            </div>
                             <div className='VolunteerDescription'>{entry.description}</div>
                         </div>
                     </motion.div>
