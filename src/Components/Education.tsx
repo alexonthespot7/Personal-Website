@@ -2,7 +2,10 @@ import '../styles/Education.css';
 
 import { motion, Transition } from 'framer-motion';
 
+import haagaHeliaLogo from '../pictures/logos/haaga_helia_university_of_applied_sciences.jpg';
+
 interface Study {
+    logo?: string;
     school: string;
     degree: string;
     period: string;
@@ -14,6 +17,7 @@ interface Study {
 
 const studies: Study[] = [
     {
+        logo: haagaHeliaLogo,
         school: 'Haaga-Helia University of Applied Sciences',
         degree: 'Bachelor of Business Administration - BBA, Business Information Technology',
         period: 'Jan 2022 – Dec 2024',
@@ -70,9 +74,14 @@ function Education() {
                     >
                         <div className='TimelineDot' />
                         <div className='TimelineContent'>
-                            <div className='SchoolName'>{study.school}</div>
-                            <div className='DegreeMeta'>{study.degree}</div>
-                            <div className='StudyPeriod'>{study.period} · {study.details.join(' · ')}</div>
+                            <div className='EntryHeader'>
+                                {study.logo && <img className='EntryLogo' src={study.logo} alt={`${study.school} logo`} />}
+                                <div className='EntryHeaderText'>
+                                    <div className='SchoolName'>{study.school}</div>
+                                    <div className='DegreeMeta'>{study.degree}</div>
+                                    <div className='StudyPeriod'>{study.period} · {study.details.join(' · ')}</div>
+                                </div>
+                            </div>
                             {study.honors && <div className='StudyHonors'>{study.honors}</div>}
                             <div className='StudyDescription'>{study.description}</div>
                             <div className='JobSkills'>
