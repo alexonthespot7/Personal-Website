@@ -12,14 +12,21 @@ interface VolunteerRole {
 
 const roles: VolunteerRole[] = [
     {
-        role: 'Volunteer',
+        role: 'Analytics & Feedback Volunteer',
+        organization: 'Slush',
+        period: 'Nov 2026',
+        cause: 'Economic Empowerment',
+        description: "Volunteered at Slush 2026 on the Analytics & Feedback team, supporting Investors Day and Days 1 and 2 of Slush at the venue. I monitored key areas, gathered on-site observations and direct feedback from attendees and staff, and helped capture insights that will shape next year's event and make the experience smoother for everyone."
+    },
+    {
+        role: 'Sustainability Volunteer',
         organization: 'Tuska Festival',
         period: 'Jun 2026',
         cause: 'Arts and Culture',
         description: 'Volunteered at Tuska Festival 2026 as part of the Recycling Team, helping maintain cleanliness across the festival area and supporting waste management operations. Completed two days of volunteering and worked closely with other volunteers and festival staff.'
     },
     {
-        role: 'Volunteer',
+        role: 'Sustainability Volunteer',
         organization: 'Flow Festival Oy (Ltd)',
         period: 'Aug 2025',
         cause: 'Arts and Culture',
